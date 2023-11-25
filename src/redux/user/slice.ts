@@ -82,8 +82,10 @@ export const authSlice = createSlice({
     builder.addCase(authThunk.fulfilled, (state, action) => {
       state.status = "success";
 
-      state.user = action.payload.user;
-      state.token = action.payload.token;
+      if (action.payload) {
+        state.user = action.payload.user;
+        state.token = action.payload.token;
+      }
     });
     builder.addCase(authThunk.rejected, (state, action) => {
       state.status = "error";
