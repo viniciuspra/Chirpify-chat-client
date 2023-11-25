@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 
 import { Logo } from "@/components/logo";
 import { Button } from "@/components/ui/button";
@@ -8,11 +8,16 @@ import { ToastContainer, toast } from "react-toastify";
 import { toastOptions } from "@/configs/toastOptions";
 import "react-toastify/dist/ReactToastify.css";
 
+import { useAppDispatch } from "@/redux/hooks";
+import { authThunk } from "@/redux/user/slice";
+
 export function Login() {
   const [username, setUsername] = useState<string>("");
   const [password, setPassword] = useState<string>("");
 
   type FormEvent = React.FormEvent<HTMLFormElement>;
+
+  const dispatch = useAppDispatch();
 
   const formValidation = () => {
     if (username.trim() === "" || password.trim() === "") {
@@ -31,7 +36,17 @@ export function Login() {
   const handleSubmit = async (e: FormEvent) => {
     e.preventDefault();
     if (!formValidation()) return;
+    dispatch(authThunk({ username, password }));
   };
+
+  useEffect(() => {
+    const registrationSuccess = localStorage.getItem("regSuccess");
+
+    if (registrationSuccess === "true") {
+      toast.success("User successfully registered.", toastOptions);
+      localStorage.removeItem("regSuccess");
+    }
+  }, []);
 
   return (
     <div className="h-screen w-screen flex flex-col items-center justify-center md:py-20 md:px-14">
