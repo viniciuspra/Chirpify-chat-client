@@ -3,7 +3,17 @@ import {
   TooltipContent,
   TooltipProvider,
   TooltipTrigger,
-} from "@/components/ui/tooltip";
+} from "./ui/tooltip";
+import {
+  DropdownMenu,
+  DropdownMenuTrigger,
+  DropdownMenuContent,
+  DropdownMenuLabel,
+  DropdownMenuSeparator,
+  DropdownMenuItem,
+} from "./ui/dropdown-menu";
+import { useAppDispatch } from "@/redux/hooks";
+import { logout } from "@/redux/user/slice";
 
 interface ISideBarItemProps {
   icon: React.ElementType;
@@ -23,7 +33,16 @@ export function SideBarItem({
   isSelected = false,
   isLastItem = false,
 }: ISideBarItemProps) {
-  const handleClick = () => {
+  const dispatch = useAppDispatch();
+
+  const handleLogOut = () => {
+    dispatch(logout());
+  };
+
+  const handleSelected = () => {
+    if (index === 3) {
+      return;
+    }
     setSelectedItem(index);
   };
 
@@ -37,9 +56,27 @@ export function SideBarItem({
           <TooltipTrigger
             data-selected={isSelected}
             className="font-bold cursor-pointer w-12 h-12 transition-colors rounded-2xl mt-2 flex items-center justify-center data-[selected=true]:bg-accent hover:bg-accent"
-            onClick={handleClick}
+            onClick={handleSelected}
           >
-            <Icon className="w-7 h-7" />
+            {isLastItem ? (
+              <DropdownMenu>
+                <DropdownMenuTrigger>
+                  <Icon className="w-7 h-7" />
+                </DropdownMenuTrigger>
+                <DropdownMenuContent side="right" sideOffset={10}>
+                  <DropdownMenuLabel>Settings</DropdownMenuLabel>
+                  <DropdownMenuSeparator />
+                  <DropdownMenuItem
+                    className="text-red-500 cursor-pointer"
+                    onClick={handleLogOut}
+                  >
+                    logout
+                  </DropdownMenuItem>
+                </DropdownMenuContent>
+              </DropdownMenu>
+            ) : (
+              <Icon className="w-7 h-7" />
+            )}
           </TooltipTrigger>
         </div>
         <TooltipContent side="right">{tooltip}</TooltipContent>
