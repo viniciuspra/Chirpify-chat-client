@@ -33,23 +33,25 @@ export function Register() {
       toast.error("Password must be at least 6 characters long.", toastOptions);
       return false;
     } else if (username.length < 3) {
-      toast.error("Name must be at least 3 characters long.", toastOptions);
+      toast.error("Username must be at least 3 characters long.", toastOptions);
       return false;
     }
     return true;
   };
 
-  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     if (!formValidation()) return;
-    await api
+    api
       .post("/api/auth/register", {
-        username,
         fullname,
+        username,
         password,
       })
       .then(() => {
         toast.success("User successfully registered.", toastOptions);
+        localStorage.setItem("regSuccess", "true");
+        navigate("/");
       })
       .catch((error) => {
         if (error.response) {
@@ -58,9 +60,6 @@ export function Register() {
           toast.error("Registration failed. Please try again.", toastOptions);
         }
       });
-    setTimeout(() => {
-      navigate("/");
-    }, 1000);
   };
 
   return (
@@ -70,7 +69,7 @@ export function Register() {
           <Logo />
           <div className="flex-1 flex flex-col justify-center space-y-6">
             <LabelInput
-              type="fullname"
+              type="text"
               label="FullName"
               placeholder="Ex: Chirpify Chat"
               name="fullname"
