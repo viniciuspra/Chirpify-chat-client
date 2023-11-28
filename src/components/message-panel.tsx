@@ -3,11 +3,11 @@ import { ScrollArea, ScrollBar } from "./ui/scroll-area";
 import { SendInput } from "./send-input";
 import { MessageBubble } from "./message-bubble";
 
-export function ChatPanel() {
+export function MessagePanel() {
   const sendAt = new Date();
 
   return (
-    <div className="flex flex-col bg-secondary/70 flex-1 rounded-md shadow-lg">
+    <div className="flex flex-col bg-secondary/70 flex-1 rounded-md shadow-lg border">
       <header className="flex items-center justify-between h-24 border-b border-muted px-4">
         <div className="flex px-6 py-5 gap-5">
           <div>

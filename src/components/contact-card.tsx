@@ -1,4 +1,4 @@
-export function MessageCard() {
+export function ContactCard() {
   return (
     <div className="flex justify-between h-20 p-3 cursor-pointer hover:bg-accent/50 rounded-lg active:scale-95 transition-all mb-4 select-none">
       <div className="flex items-center gap-3">
