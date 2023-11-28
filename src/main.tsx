@@ -10,7 +10,7 @@ import { store } from "./redux/store";
 ReactDOM.createRoot(document.getElementById("root")!).render(
   <React.StrictMode>
     <Provider store={store}>
-      <ThemeProvider defaultTheme="dark" storageKey="vite-ui-theme">
+      <ThemeProvider defaultTheme="dark" storageKey="chirpify-ui-theme">
         <AppRoutes />
       </ThemeProvider>
     </Provider>
