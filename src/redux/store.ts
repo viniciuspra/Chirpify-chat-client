@@ -1,11 +1,13 @@
 import { configureStore } from "@reduxjs/toolkit";
 
-import authReducer from "./user/slice";
+import authReducer from "./auth/slice";
+import requestReducer from "./request/slice";
 import panelsReducer from "./panel/slice";
 
 export const store = configureStore({
   reducer: {
     auth: authReducer,
+    request: requestReducer,
     panels: panelsReducer,
   },
 });
