@@ -2,7 +2,7 @@ import { Paperclip, SendHorizonal, Smile } from "lucide-react";
 
 export function SendInput() {
   return (
-    <div className="flex items-center gap-3 border border-white/70 m-6 px-4">
+    <div className="flex items-center gap-3 border border-primary/70 px-4 flex-1 min-h-16">
       <input
         type="text"
         className="w-full bg-transparent outline-none py-5 px-2 text-lg font-semibold"
