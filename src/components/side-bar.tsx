@@ -1,26 +1,22 @@
 import { SideBarItem } from "./side-bar-item";
 
-import { Home, AtSign, Settings, UserCircle2 } from "lucide-react";
-import { useState } from "react";
+import { Inbox, AtSign, UserCircle2, Heart } from "lucide-react";
+import { useAppDispatch } from "@/redux/hooks";
+import { setActivePanel } from "@/redux/panel/slice";
 
-type TooltipContent = "Messages" | "Friends" | "Profile" | "Settings";
+export type TooltipContent = "Chats" | "Contacts" | "Requests" | "Profile";
 
 const iconMapping: Record<TooltipContent, React.ElementType> = {
-  Messages: Home,
-  Friends: AtSign,
+  Chats: Inbox,
+  Contacts: AtSign,
+  Requests: Heart,
   Profile: UserCircle2,
-  Settings: Settings,
 };
 
 export function SideBar({ ...props }) {
-  const [selectedItem, setSelectedItem] = useState<number>(0);
+  const dispatch = useAppDispatch();
 
-  const items: TooltipContent[] = [
-    "Messages",
-    "Friends",
-    "Profile",
-    "Settings",
-  ];
+  const items: TooltipContent[] = ["Chats", "Contacts", "Requests", "Profile"];
 
   return (
     <div
@@ -32,9 +28,7 @@ export function SideBar({ ...props }) {
           key={index}
           icon={iconMapping[item]}
           tooltip={item}
-          index={index}
-          setSelectedItem={setSelectedItem}
-          isSelected={selectedItem === index}
+          onSelect={() => dispatch(setActivePanel(item))}
           isLastItem={index === items.length - 1}
         />
       ))}

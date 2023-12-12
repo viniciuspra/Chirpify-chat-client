@@ -3,48 +3,43 @@ import {
   TooltipContent,
   TooltipProvider,
   TooltipTrigger,
-} from "./ui/tooltip";
+} from "@/components/ui/tooltip";
+
+import { TooltipContent as TooltipType } from "./side-bar";
+import { useAppDispatch, useAppSelector } from "@/redux/hooks";
 import {
-  DropdownMenu,
-  DropdownMenuTrigger,
-  DropdownMenuContent,
-  DropdownMenuLabel,
-  DropdownMenuSeparator,
-  DropdownMenuItem,
-} from "./ui/dropdown-menu";
-import { useAppDispatch } from "@/redux/hooks";
-import { logout } from "@/redux/user/slice";
+  clearActivePanel,
+  selectActivePanel,
+  setActivePanel,
+} from "@/redux/panel/slice";
+import { selectRequest } from "@/redux/request/slice";
 
 interface ISideBarItemProps {
   icon: React.ElementType;
-  tooltip: TooltipContent;
-  index: number;
-  setSelectedItem: React.Dispatch<React.SetStateAction<number>>;
-  isSelected: boolean;
+  tooltip: TooltipType;
+  onSelect: React.Dispatch<React.SetStateAction<number>>;
   isLastItem: boolean;
 }
-type TooltipContent = "Messages" | "Friends" | "Profile" | "Settings";
 
 export function SideBarItem({
   icon: Icon,
   tooltip,
-  index,
-  setSelectedItem,
-  isSelected = false,
   isLastItem = false,
 }: ISideBarItemProps) {
   const dispatch = useAppDispatch();
+  const activePanel = useAppSelector(selectActivePanel);
 
-  const handleLogOut = () => {
-    dispatch(logout());
-  };
+  const { receivedRequestCount } = useAppSelector(selectRequest);
 
-  const handleSelected = () => {
-    if (index === 3) {
-      return;
+  const HandleClick = () => {
+    if (activePanel === tooltip) {
+      dispatch(clearActivePanel());
+    } else {
+      dispatch(setActivePanel(tooltip));
     }
-    setSelectedItem(index);
   };
+
+  const isSelected = activePanel === tooltip;
 
   return (
     <TooltipProvider>
@@ -55,27 +50,14 @@ export function SideBarItem({
         >
           <TooltipTrigger
             data-selected={isSelected}
-            className="font-bold cursor-pointer w-12 h-12 transition-colors rounded-2xl mt-2 flex items-center justify-center data-[selected=true]:bg-accent hover:bg-accent"
-            onClick={handleSelected}
+            className="font-bold relative cursor-pointer w-12 h-12 transition-colors rounded-2xl mt-2 flex items-center justify-center data-[selected=true]:bg-slate-500/40 hover:bg-slate-500/20"
+            onClick={HandleClick}
           >
-            {isLastItem ? (
-              <DropdownMenu>
-                <DropdownMenuTrigger>
-                  <Icon className="w-7 h-7" />
-                </DropdownMenuTrigger>
-                <DropdownMenuContent side="right" sideOffset={10}>
-                  <DropdownMenuLabel>Settings</DropdownMenuLabel>
-                  <DropdownMenuSeparator />
-                  <DropdownMenuItem
-                    className="text-red-500 cursor-pointer"
-                    onClick={handleLogOut}
-                  >
-                    logout
-                  </DropdownMenuItem>
-                </DropdownMenuContent>
-              </DropdownMenu>
-            ) : (
-              <Icon className="w-7 h-7" />
+            <Icon className="w-7 h-7" />
+            {tooltip === "Requests" && receivedRequestCount > 0 && (
+              <span className="absolute text-sm w-5 h-5 flex items-center justify-center bottom-0 right-0 bg-red-500 rounded-full">
+                {receivedRequestCount}
+              </span>
             )}
           </TooltipTrigger>
         </div>
