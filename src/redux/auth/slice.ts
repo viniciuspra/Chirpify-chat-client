@@ -8,6 +8,7 @@ import { toast } from "react-toastify";
 import { toastOptions } from "@/configs/toastOptions";
 
 type UserType = {
+  id: string;
   username: string;
   password: string;
 };

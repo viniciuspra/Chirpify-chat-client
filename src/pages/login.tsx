@@ -9,7 +9,7 @@ import { toastOptions } from "@/configs/toastOptions";
 import "react-toastify/dist/ReactToastify.css";
 
 import { useAppDispatch } from "@/redux/hooks";
-import { authThunk } from "@/redux/user/slice";
+import { authThunk } from "@/redux/auth/slice";
 
 export function Login() {
   const [username, setUsername] = useState<string>("");
