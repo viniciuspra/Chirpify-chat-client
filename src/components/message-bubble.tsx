@@ -9,7 +9,7 @@ interface MessageBubbleProps {
 export function MessageBubble({ isUser, text, sendAt }: MessageBubbleProps) {
   const timeAgo = formatDistanceToNow(sendAt);
   return (
-    <div className="w-full flex flex-col px-2">
+    <div className="w-full flex flex-col">
       <div
         className={`w-fit flex p-3 rounded-xl text-white font-semibold ${
           isUser
