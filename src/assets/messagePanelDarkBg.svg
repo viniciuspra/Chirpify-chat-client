@@ -1,0 +1,149 @@
+<svg xmlns="http://www.w3.org/2000/svg" version="1.1"
+  xmlns:xlink="http://www.w3.org/1999/xlink"
+  xmlns:svgjs="http://svgjs.dev/svgjs" width="1440" height="560" preserveAspectRatio="none" viewBox="0 0 1440 560">
+  <g mask="url(&quot;#SvgjsMask1580&quot;)" fill="none">
+    <use xlink:href="#SvgjsG1588" transform="translate(0, 0)" fill="rgba(30, 40, 57, 0.86)"></use>
+    <use xlink:href="#SvgjsG1588" transform="translate(0, 540)" fill="rgba(30, 40, 57, 0.86)"></use>
+    <use xlink:href="#SvgjsG1588" transform="translate(540, 0)" fill="rgba(30, 40, 57, 0.86)"></use>
+    <use xlink:href="#SvgjsG1588" transform="translate(540, 540)" fill="rgba(30, 40, 57, 0.86)"></use>
+    <use xlink:href="#SvgjsG1588" transform="translate(1080, 0)" fill="rgba(30, 40, 57, 0.86)"></use>
+    <use xlink:href="#SvgjsG1588" transform="translate(1080, 540)" fill="rgba(30, 40, 57, 0.86)"></use>
+  </g>
+  <defs>
+    <mask id="SvgjsMask1580">
+      <rect width="1440" height="560" fill="#ffffff"></rect>
+    </mask>
+    <g id="SvgjsG1586">
+      <path d="M13.01 4.74C10.73 1.23 6.74-0.22 4.1 1.5c-1.29 0.84-2.03 2.29-2.17 3.95l-2.87 1.87 3.66 2.34c0.2 0.44 0.44 0.88 0.71 1.31 2.28 3.51 6.27 4.96 8.92 3.24 2.65-1.72 2.94-5.96 0.66-9.46zM5.48 5.83a1.07 1.07 0 1 1 1.79-1.16 1.07 1.07 0 0 1-1.79 1.16z m1.74 2.67a1.07 1.07 0 1 1 1.78-1.16 1.07 1.07 0 0 1-1.78 1.16z m1.71 2.64c-0.32-0.49-0.18-1.16 0.31-1.47s1.15-0.18 1.48 0.31 0.18 1.16-0.32 1.48a1.07 1.07 0 0 1-1.47-0.32z"></path>
+    </g>
+    <g id="SvgjsG1583">
+      <path d="M-0.51 5.56l7.63 11.76L16.04 11.52 8.41-0.23l-8.92 5.79z m14.78 5.06L8.09 9.3c-0.63-0.13-1.07-0.82-0.93-1.46l1.31-6.15 5.8 8.93z m-6.74-9.1l-1.07 5.02-5.04-1.07 6.11-3.96z m-6.32 4.89l5.03 1.07-0.04 0.21c-0.22 1.17 0.53 2.31 1.66 2.56l0.21 0.04-1.06 5.06-5.81-8.95z m6.76 9.14L9.04 10.52 14.07 11.58 7.96 15.55z" fill-rule="evenodd"></path>
+    </g>
+    <g id="SvgjsG1587">
+      <path d="M13.81 4.23C11.41 0.53 7.21-1 4.42 0.81c-1.36 0.89-2.13 2.41-2.28 4.17l-3.03 1.96 3.86 2.47c0.21 0.46 0.46 0.92 0.75 1.37 2.4 3.7 6.6 5.22 9.39 3.41C15.89 12.38 16.21 7.92 13.81 4.23z" fill-rule="evenodd"></path>
+    </g>
+    <g id="SvgjsG1581">
+      <path d="M16.56 11.76L7.11 8.58 8.04-1.35z m-7.43 4.83L9.7 10.61l5.69 1.91zM6.86-0.61l-0.57 5.98L0.6 3.46z"></path>
+      <path d="M8.67 10.25L5.96 9.33 6.23 6.49-0.51 4.2l8.53 13.13z"></path>
+    </g>
+    <g id="SvgjsG1582">
+      <path d="M7.93 5.22l0.52 0.8a0.48 0.48 0 0 0 0.67 0.14L11.5 4.61a0.49 0.49 0 0 0 0.14-0.67l-0.51-0.8-3.2 2.08z m-4.74 3.08l0.52 0.79a0.49 0.49 0 0 1-0.14 0.68l-2.38 1.54A0.48 0.48 0 0 1 0.52 11.17l-0.52-0.8L3.19 8.3z m1.75-2.5c2.17-1.42 2.63-1.14 2.79-0.9l0.04 0.07L10.96 2.89l-0.05-0.08C10.64 2.39 8.57 0.86 3.76 3.98-1.05 7.11-0.49 9.62-0.22 10.03l0.06 0.09L3.03 8.04l-0.04-0.06c-0.15-0.23-0.21-0.76 1.95-2.18zM11.37 5.53a1.09 1.09 0 0 1-0.45 0.59 1.09 1.09 0 0 1-0.72 0.17l-0.08 0.69c0.41 0.05 0.83-0.05 1.18-0.28a1.8 1.8 0 0 0 0.74-0.96l-0.67-0.21zM9.7 8.67a3.47 3.47 0 0 0 2.46-0.51c0.73-0.47 1.25-1.19 1.47-2.04l-0.67-0.19a2.78 2.78 0 0 1-1.17 1.64c-0.59 0.38-1.29 0.53-1.99 0.41L9.7 8.67z m0-0.63z m0 0z m0 0z"></path>
+      <path d="M9.28 10.36a5.14 5.14 0 0 0 3.74-0.75 5.15 5.15 0 0 0 2.21-3.1l-0.68-0.18A4.46 4.46 0 0 1 12.64 9.03c-0.96 0.63-2.12 0.86-3.24 0.65l-0.12 0.68z"></path>
+      <path d="M8.86 12.05c1.75 0.33 3.53-0.02 5.02-0.98 1.49-0.97 2.53-2.45 2.94-4.17l-0.67-0.16A6.14 6.14 0 0 1 13.51 10.49c-1.34 0.87-2.94 1.18-4.52 0.88l-0.13 0.68z"></path>
+    </g>
+    <g id="SvgjsG1585">
+      <path d="M8.48 2.32l2.15 3.3-5.87 3.81L2.61 6.13 8.48 2.32z" fill-rule="evenodd"></path>
+      <path d="M3.18 15.09L4.25 8.65l5.78-3.75L16.44 6.48 10.41 11.71 3.18 15.09z" fill-rule="evenodd"></path>
+      <path d="M16.44 6.48S13.71 9.57 10.41 11.71s-7.23 3.38-7.23 3.38L16.44 6.48z" fill-rule="evenodd"></path>
+    </g>
+    <g id="SvgjsG1584">
+      <path d="M5.99-0.23l1.72 2.64-4.7 3.05L1.29 2.82z"></path>
+      <path d="M1.75 9.98L2.61 4.83l4.62-3 5.13 1.26L7.53 7.28z"></path>
+      <path d="M12.36 3.09S10.17 5.56 7.53 7.28s-5.79 2.7-5.78 2.7m3.52 7.17l-0.15-1.46c0.03 0 3.44-0.37 6.58-2.41 3.11-2.02 4.69-5.18 4.7-5.21l1.32 0.64c-0.07 0.14-1.76 3.55-5.22 5.8-3.44 2.23-7.07 2.62-7.23 2.64z"></path>
+      <path d="M5.44 14.19l-0.14-1.46c0.02 0 2.51-0.28 4.79-1.76 2.27-1.48 3.41-3.77 3.43-3.79l1.31 0.65c-0.05 0.11-1.33 2.68-3.94 4.37-2.59 1.68-5.33 1.97-5.45 1.99z"></path>
+      <path d="M5.83 11.25l-0.15-1.46c0.01 0 1.54-0.17 2.94-1.08 1.38-0.89 2.08-2.3 2.09-2.31l1.32 0.64c-0.04 0.07-0.88 1.78-2.61 2.9-1.71 1.11-3.51 1.3-3.59 1.31z"></path>
+    </g>
+    <g id="SvgjsG1588">
+      <use xlink:href="#SvgjsG1581" transform="translate(0, 0) scale(2)" fill="rgba(30, 40, 57, 0.86)"></use>
+      <use xlink:href="#SvgjsG1582" transform="translate(0, 54) scale(2)" fill="rgba(30, 40, 57, 0.86)"></use>
+      <use xlink:href="#SvgjsG1581" transform="translate(0, 108) scale(2)" fill="rgba(30, 40, 57, 0.86)"></use>
+      <use xlink:href="#SvgjsG1583" transform="translate(0, 162) scale(2)" fill="rgba(30, 40, 57, 0.86)"></use>
+      <use xlink:href="#SvgjsG1583" transform="translate(0, 216) scale(2)" fill="rgba(30, 40, 57, 0.86)"></use>
+      <use xlink:href="#SvgjsG1584" transform="translate(0, 270) scale(2)" fill="rgba(30, 40, 57, 0.86)"></use>
+      <use xlink:href="#SvgjsG1585" transform="translate(0, 324) scale(2)" fill="rgba(30, 40, 57, 0.86)"></use>
+      <use xlink:href="#SvgjsG1581" transform="translate(0, 378) scale(2)" fill="rgba(30, 40, 57, 0.86)"></use>
+      <use xlink:href="#SvgjsG1582" transform="translate(0, 432) scale(2)" fill="rgba(30, 40, 57, 0.86)"></use>
+      <use xlink:href="#SvgjsG1585" transform="translate(0, 486) scale(2)" fill="rgba(30, 40, 57, 0.86)"></use>
+      <use xlink:href="#SvgjsG1581" transform="translate(54, 0) scale(2)" fill="rgba(30, 40, 57, 0.86)"></use>
+      <use xlink:href="#SvgjsG1586" transform="translate(54, 54) scale(2)" fill="rgba(30, 40, 57, 0.86)"></use>
+      <use xlink:href="#SvgjsG1582" transform="translate(54, 108) scale(2)" fill="rgba(30, 40, 57, 0.86)"></use>
+      <use xlink:href="#SvgjsG1582" transform="translate(54, 162) scale(2)" fill="rgba(30, 40, 57, 0.86)"></use>
+      <use xlink:href="#SvgjsG1584" transform="translate(54, 216) scale(2)" fill="rgba(30, 40, 57, 0.86)"></use>
+      <use xlink:href="#SvgjsG1586" transform="translate(54, 270) scale(2)" fill="rgba(30, 40, 57, 0.86)"></use>
+      <use xlink:href="#SvgjsG1581" transform="translate(54, 324) scale(2)" fill="rgba(30, 40, 57, 0.86)"></use>
+      <use xlink:href="#SvgjsG1583" transform="translate(54, 378) scale(2)" fill="rgba(30, 40, 57, 0.86)"></use>
+      <use xlink:href="#SvgjsG1587" transform="translate(54, 432) scale(2)" fill="rgba(30, 40, 57, 0.86)"></use>
+      <use xlink:href="#SvgjsG1586" transform="translate(54, 486) scale(2)" fill="rgba(30, 40, 57, 0.86)"></use>
+      <use xlink:href="#SvgjsG1586" transform="translate(108, 0) scale(2)" fill="rgba(30, 40, 57, 0.86)"></use>
+      <use xlink:href="#SvgjsG1585" transform="translate(108, 54) scale(2)" fill="rgba(30, 40, 57, 0.86)"></use>
+      <use xlink:href="#SvgjsG1581" transform="translate(108, 108) scale(2)" fill="rgba(30, 40, 57, 0.86)"></use>
+      <use xlink:href="#SvgjsG1581" transform="translate(108, 162) scale(2)" fill="rgba(30, 40, 57, 0.86)"></use>
+      <use xlink:href="#SvgjsG1581" transform="translate(108, 216) scale(2)" fill="rgba(30, 40, 57, 0.86)"></use>
+      <use xlink:href="#SvgjsG1583" transform="translate(108, 270) scale(2)" fill="rgba(30, 40, 57, 0.86)"></use>
+      <use xlink:href="#SvgjsG1586" transform="translate(108, 324) scale(2)" fill="rgba(30, 40, 57, 0.86)"></use>
+      <use xlink:href="#SvgjsG1581" transform="translate(108, 378) scale(2)" fill="rgba(30, 40, 57, 0.86)"></use>
+      <use xlink:href="#SvgjsG1581" transform="translate(108, 432) scale(2)" fill="rgba(30, 40, 57, 0.86)"></use>
+      <use xlink:href="#SvgjsG1583" transform="translate(108, 486) scale(2)" fill="rgba(30, 40, 57, 0.86)"></use>
+      <use xlink:href="#SvgjsG1583" transform="translate(162, 0) scale(2)" fill="rgba(30, 40, 57, 0.86)"></use>
+      <use xlink:href="#SvgjsG1583" transform="translate(162, 54) scale(2)" fill="rgba(30, 40, 57, 0.86)"></use>
+      <use xlink:href="#SvgjsG1585" transform="translate(162, 108) scale(2)" fill="rgba(30, 40, 57, 0.86)"></use>
+      <use xlink:href="#SvgjsG1584" transform="translate(162, 162) scale(2)" fill="rgba(30, 40, 57, 0.86)"></use>
+      <use xlink:href="#SvgjsG1587" transform="translate(162, 216) scale(2)" fill="rgba(30, 40, 57, 0.86)"></use>
+      <use xlink:href="#SvgjsG1586" transform="translate(162, 270) scale(2)" fill="rgba(30, 40, 57, 0.86)"></use>
+      <use xlink:href="#SvgjsG1586" transform="translate(162, 324) scale(2)" fill="rgba(30, 40, 57, 0.86)"></use>
+      <use xlink:href="#SvgjsG1585" transform="translate(162, 378) scale(2)" fill="rgba(30, 40, 57, 0.86)"></use>
+      <use xlink:href="#SvgjsG1587" transform="translate(162, 432) scale(2)" fill="rgba(30, 40, 57, 0.86)"></use>
+      <use xlink:href="#SvgjsG1585" transform="translate(162, 486) scale(2)" fill="rgba(30, 40, 57, 0.86)"></use>
+      <use xlink:href="#SvgjsG1585" transform="translate(216, 0) scale(2)" fill="rgba(30, 40, 57, 0.86)"></use>
+      <use xlink:href="#SvgjsG1583" transform="translate(216, 54) scale(2)" fill="rgba(30, 40, 57, 0.86)"></use>
+      <use xlink:href="#SvgjsG1586" transform="translate(216, 108) scale(2)" fill="rgba(30, 40, 57, 0.86)"></use>
+      <use xlink:href="#SvgjsG1582" transform="translate(216, 162) scale(2)" fill="rgba(30, 40, 57, 0.86)"></use>
+      <use xlink:href="#SvgjsG1583" transform="translate(216, 216) scale(2)" fill="rgba(30, 40, 57, 0.86)"></use>
+      <use xlink:href="#SvgjsG1584" transform="translate(216, 270) scale(2)" fill="rgba(30, 40, 57, 0.86)"></use>
+      <use xlink:href="#SvgjsG1586" transform="translate(216, 324) scale(2)" fill="rgba(30, 40, 57, 0.86)"></use>
+      <use xlink:href="#SvgjsG1582" transform="translate(216, 378) scale(2)" fill="rgba(30, 40, 57, 0.86)"></use>
+      <use xlink:href="#SvgjsG1586" transform="translate(216, 432) scale(2)" fill="rgba(30, 40, 57, 0.86)"></use>
+      <use xlink:href="#SvgjsG1584" transform="translate(216, 486) scale(2)" fill="rgba(30, 40, 57, 0.86)"></use>
+      <use xlink:href="#SvgjsG1583" transform="translate(270, 0) scale(2)" fill="rgba(30, 40, 57, 0.86)"></use>
+      <use xlink:href="#SvgjsG1581" transform="translate(270, 54) scale(2)" fill="rgba(30, 40, 57, 0.86)"></use>
+      <use xlink:href="#SvgjsG1582" transform="translate(270, 108) scale(2)" fill="rgba(30, 40, 57, 0.86)"></use>
+      <use xlink:href="#SvgjsG1584" transform="translate(270, 162) scale(2)" fill="rgba(30, 40, 57, 0.86)"></use>
+      <use xlink:href="#SvgjsG1585" transform="translate(270, 216) scale(2)" fill="rgba(30, 40, 57, 0.86)"></use>
+      <use xlink:href="#SvgjsG1584" transform="translate(270, 270) scale(2)" fill="rgba(30, 40, 57, 0.86)"></use>
+      <use xlink:href="#SvgjsG1583" transform="translate(270, 324) scale(2)" fill="rgba(30, 40, 57, 0.86)"></use>
+      <use xlink:href="#SvgjsG1581" transform="translate(270, 378) scale(2)" fill="rgba(30, 40, 57, 0.86)"></use>
+      <use xlink:href="#SvgjsG1586" transform="translate(270, 432) scale(2)" fill="rgba(30, 40, 57, 0.86)"></use>
+      <use xlink:href="#SvgjsG1586" transform="translate(270, 486) scale(2)" fill="rgba(30, 40, 57, 0.86)"></use>
+      <use xlink:href="#SvgjsG1587" transform="translate(324, 0) scale(2)" fill="rgba(30, 40, 57, 0.86)"></use>
+      <use xlink:href="#SvgjsG1587" transform="translate(324, 54) scale(2)" fill="rgba(30, 40, 57, 0.86)"></use>
+      <use xlink:href="#SvgjsG1585" transform="translate(324, 108) scale(2)" fill="rgba(30, 40, 57, 0.86)"></use>
+      <use xlink:href="#SvgjsG1582" transform="translate(324, 162) scale(2)" fill="rgba(30, 40, 57, 0.86)"></use>
+      <use xlink:href="#SvgjsG1586" transform="translate(324, 216) scale(2)" fill="rgba(30, 40, 57, 0.86)"></use>
+      <use xlink:href="#SvgjsG1585" transform="translate(324, 270) scale(2)" fill="rgba(30, 40, 57, 0.86)"></use>
+      <use xlink:href="#SvgjsG1581" transform="translate(324, 324) scale(2)" fill="rgba(30, 40, 57, 0.86)"></use>
+      <use xlink:href="#SvgjsG1581" transform="translate(324, 378) scale(2)" fill="rgba(30, 40, 57, 0.86)"></use>
+      <use xlink:href="#SvgjsG1581" transform="translate(324, 432) scale(2)" fill="rgba(30, 40, 57, 0.86)"></use>
+      <use xlink:href="#SvgjsG1583" transform="translate(324, 486) scale(2)" fill="rgba(30, 40, 57, 0.86)"></use>
+      <use xlink:href="#SvgjsG1586" transform="translate(378, 0) scale(2)" fill="rgba(30, 40, 57, 0.86)"></use>
+      <use xlink:href="#SvgjsG1585" transform="translate(378, 54) scale(2)" fill="rgba(30, 40, 57, 0.86)"></use>
+      <use xlink:href="#SvgjsG1587" transform="translate(378, 108) scale(2)" fill="rgba(30, 40, 57, 0.86)"></use>
+      <use xlink:href="#SvgjsG1583" transform="translate(378, 162) scale(2)" fill="rgba(30, 40, 57, 0.86)"></use>
+      <use xlink:href="#SvgjsG1582" transform="translate(378, 216) scale(2)" fill="rgba(30, 40, 57, 0.86)"></use>
+      <use xlink:href="#SvgjsG1587" transform="translate(378, 270) scale(2)" fill="rgba(30, 40, 57, 0.86)"></use>
+      <use xlink:href="#SvgjsG1583" transform="translate(378, 324) scale(2)" fill="rgba(30, 40, 57, 0.86)"></use>
+      <use xlink:href="#SvgjsG1583" transform="translate(378, 378) scale(2)" fill="rgba(30, 40, 57, 0.86)"></use>
+      <use xlink:href="#SvgjsG1587" transform="translate(378, 432) scale(2)" fill="rgba(30, 40, 57, 0.86)"></use>
+      <use xlink:href="#SvgjsG1587" transform="translate(378, 486) scale(2)" fill="rgba(30, 40, 57, 0.86)"></use>
+      <use xlink:href="#SvgjsG1581" transform="translate(432, 0) scale(2)" fill="rgba(30, 40, 57, 0.86)"></use>
+      <use xlink:href="#SvgjsG1587" transform="translate(432, 54) scale(2)" fill="rgba(30, 40, 57, 0.86)"></use>
+      <use xlink:href="#SvgjsG1586" transform="translate(432, 108) scale(2)" fill="rgba(30, 40, 57, 0.86)"></use>
+      <use xlink:href="#SvgjsG1585" transform="translate(432, 162) scale(2)" fill="rgba(30, 40, 57, 0.86)"></use>
+      <use xlink:href="#SvgjsG1587" transform="translate(432, 216) scale(2)" fill="rgba(30, 40, 57, 0.86)"></use>
+      <use xlink:href="#SvgjsG1587" transform="translate(432, 270) scale(2)" fill="rgba(30, 40, 57, 0.86)"></use>
+      <use xlink:href="#SvgjsG1581" transform="translate(432, 324) scale(2)" fill="rgba(30, 40, 57, 0.86)"></use>
+      <use xlink:href="#SvgjsG1582" transform="translate(432, 378) scale(2)" fill="rgba(30, 40, 57, 0.86)"></use>
+      <use xlink:href="#SvgjsG1586" transform="translate(432, 432) scale(2)" fill="rgba(30, 40, 57, 0.86)"></use>
+      <use xlink:href="#SvgjsG1587" transform="translate(432, 486) scale(2)" fill="rgba(30, 40, 57, 0.86)"></use>
+      <use xlink:href="#SvgjsG1585" transform="translate(486, 0) scale(2)" fill="rgba(30, 40, 57, 0.86)"></use>
+      <use xlink:href="#SvgjsG1585" transform="translate(486, 54) scale(2)" fill="rgba(30, 40, 57, 0.86)"></use>
+      <use xlink:href="#SvgjsG1586" transform="translate(486, 108) scale(2)" fill="rgba(30, 40, 57, 0.86)"></use>
+      <use xlink:href="#SvgjsG1585" transform="translate(486, 162) scale(2)" fill="rgba(30, 40, 57, 0.86)"></use>
+      <use xlink:href="#SvgjsG1581" transform="translate(486, 216) scale(2)" fill="rgba(30, 40, 57, 0.86)"></use>
+      <use xlink:href="#SvgjsG1587" transform="translate(486, 270) scale(2)" fill="rgba(30, 40, 57, 0.86)"></use>
+      <use xlink:href="#SvgjsG1585" transform="translate(486, 324) scale(2)" fill="rgba(30, 40, 57, 0.86)"></use>
+      <use xlink:href="#SvgjsG1583" transform="translate(486, 378) scale(2)" fill="rgba(30, 40, 57, 0.86)"></use>
+      <use xlink:href="#SvgjsG1583" transform="translate(486, 432) scale(2)" fill="rgba(30, 40, 57, 0.86)"></use>
+      <use xlink:href="#SvgjsG1584" transform="translate(486, 486) scale(2)" fill="rgba(30, 40, 57, 0.86)"></use>
+    </g>
+  </defs>
+</svg>
