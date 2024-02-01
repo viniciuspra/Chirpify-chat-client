@@ -8,14 +8,15 @@ interface MessageBubbleProps {
 
 export function MessageBubble({ isUser, text, sendAt }: MessageBubbleProps) {
   const timeAgo = formatDistanceToNow(sendAt);
+
   return (
     <div className="w-full flex flex-col">
       <div
-        className={`w-fit flex p-3 rounded-xl text-white font-semibold ${
+        className={`w-fit flex p-3 rounded-b-xl text-white font-semibold whitespace-normal ${
           isUser
-            ? "self-end bg-logo md:ml-6 ml-2"
-            : "self-start bg-slate-800 md:mr-6 mr-2"
-        }`}
+            ? "self-end bg-logo md:ml-10 ml-2 rounded-l-xl"
+            : "self-start bg-slate-800 md:mr-10 mr-2 rounded-r-xl"
+        } break-all`}
       >
         {text}
       </div>
