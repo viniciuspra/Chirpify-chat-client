@@ -54,12 +54,24 @@ module.exports = {
           DEFAULT: "hsl(var(--logo-color))",
         },
       },
+      backgroundImage: {
+        "dark-pattern": "url('/src/assets/messagePanelDarkBg.svg')",
+        "light-pattern": "url('/src/assets/messagePanelLigthBg.svg')",
+      },
       borderRadius: {
         lg: "var(--radius)",
         md: "calc(var(--radius) - 2px)",
         sm: "calc(var(--radius) - 4px)",
       },
       keyframes: {
+        slideLeft: {
+          "0%": { transform: "translateX(-50px)" },
+          "100%": { transform: "translateX(0)" },
+        },
+        slideRight: {
+          "0%": { transform: "translateX(50px)" },
+          "100%": { transform: "translateX(0x)" },
+        },
         "accordion-down": {
           from: { height: 0 },
           to: { height: "var(--radix-accordion-content-height)" },
@@ -72,6 +84,8 @@ module.exports = {
       animation: {
         "accordion-down": "accordion-down 0.2s ease-out",
         "accordion-up": "accordion-up 0.2s ease-out",
+        slideLeft: "slideLeft 0.2s ease-out",
+        slideRight: "slideRight 0.2s ease-out",
       },
     },
   },
