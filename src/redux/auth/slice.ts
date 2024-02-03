@@ -7,7 +7,7 @@ import { AxiosError } from "axios";
 import { toast } from "react-toastify";
 import { toastOptions } from "@/configs/toastOptions";
 
-type UserType = {
+type AuthUser = {
   id: string;
   username: string;
   password: string;
@@ -16,7 +16,7 @@ type UserType = {
 type RequestState = "idle" | "loading" | "success" | "error";
 
 interface AuthState {
-  user: UserType | null;
+  user: AuthUser | null;
   token: string | null;
   status: RequestState;
   error: string | undefined;
@@ -31,7 +31,7 @@ const initialState: AuthState = {
 
 export const authThunk = createAsyncThunk(
   "auth/session",
-  async ({ username, password }: UserType) => {
+  async ({ username, password }: AuthUser) => {
     try {
       const response = await api.post("/api/auth/sessions", {
         username,
@@ -63,7 +63,7 @@ export const authSlice = createSlice({
   reducers: {
     login: (
       state,
-      action: PayloadAction<{ user: UserType; token: string }>
+      action: PayloadAction<{ user: AuthUser; token: string }>
     ) => {
       state.user = action.payload.user;
       state.token = action.payload.token;
