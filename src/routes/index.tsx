@@ -3,7 +3,7 @@ import { BrowserRouter } from "react-router-dom";
 import { Loading } from "@/components/loading";
 
 import { useAppDispatch, useAppSelector } from "@/redux/hooks";
-import { login, selectAuth } from "@/redux/user/slice";
+import { login, selectAuth } from "@/redux/auth/slice";
 import { api } from "@/services/api";
 
 const ChatRoutes: FC = lazy(() => import("./chat.routes"));
