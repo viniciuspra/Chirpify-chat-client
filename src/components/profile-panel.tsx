@@ -32,9 +32,9 @@ import { api } from "@/services/api";
 import { toast, ToastContainer } from "react-toastify";
 import { toastOptions } from "@/configs/toastOptions";
 
-import { useAppSelector } from "@/redux/hooks";
-import { selectAuth } from "@/redux/auth/slice";
-import { Pencil } from "lucide-react";
+import { useAppDispatch, useAppSelector } from "@/redux/hooks";
+import { logout, selectAuth } from "@/redux/auth/slice";
+import { LogOut, Pencil } from "lucide-react";
 
 interface ProfilePanelProps extends UserType {
   fullname: string;
@@ -48,7 +48,13 @@ export function ProfilePanel() {
   const [newPasswordError, setNewPasswordError] = useState("");
   const [oldPasswordError, setOldPasswordError] = useState("");
   const [isEditing, setIsEditing] = useState(false);
+
   const AuthUser = useAppSelector(selectAuth);
+  const dispatch = useAppDispatch();
+
+  const handleLogOut = () => {
+    dispatch(logout());
+  };
 
   const handleOldPasswordChange = (e: ChangeEvent<HTMLInputElement>) => {
     setOldPassword(e.target.value);
@@ -130,7 +136,7 @@ export function ProfilePanel() {
           Profile
         </h1>
       </header>
-      <div className="p-3 flex flex-col">
+      <div className="p-3 flex flex-col flex-1">
         <Avatar className="w-24 h-24">
           <AvatarImage src={user?.avatar} />
           <AvatarFallback className="uppercase text-2xl">
@@ -246,6 +252,15 @@ export function ProfilePanel() {
             </AlertDialog>
           </div>
         </div>
+      </div>
+      <div className="w-full flex items-center justify-end p-5">
+        <Button
+          variant={"outline"}
+          className="text-red-500 hover:text-red-500 p-5 flex gap-3"
+          onClick={handleLogOut}
+        >
+          Log Out <LogOut size={18} />
+        </Button>
       </div>
       <ToastContainer />
     </div>
