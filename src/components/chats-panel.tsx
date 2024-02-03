@@ -122,7 +122,7 @@ export function ChatsPanel() {
                     {loading ? "loading..." : "No contacts found."}
                   </CommandEmpty>
                   <CommandGroup heading="All contatcts">
-                    {contacts.length > 0 ? (
+                    {contacts.length > 0 &&
                       contacts.map((contact) => (
                         <CommandItem
                           key={contact.username}
@@ -156,12 +156,7 @@ export function ChatsPanel() {
                             </div>
                           </button>
                         </CommandItem>
-                      ))
-                    ) : (
-                      <p className="font-thin w-full text-center py-4">
-                        No chat found or no user chats available.
-                      </p>
-                    )}
+                      ))}
                   </CommandGroup>
                 </CommandList>
               </div>
