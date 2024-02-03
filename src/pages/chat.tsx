@@ -1,5 +1,8 @@
-import { selectActivePanel } from "@/redux/panel/slice";
+import { useEffect, useRef, useState } from "react";
+
 import { logout, selectAuth } from "@/redux/auth/slice";
+import { selectActivePanel } from "@/redux/panel/slice";
+import { updateReceivedRequests } from "@/redux/request/slice";
 import { useAppDispatch, useAppSelector } from "@/redux/hooks";
 
 import { Button } from "@/components/ui/button";
@@ -17,14 +20,12 @@ import {
   SheetTitle,
   SheetDescription,
   SheetFooter,
-  SheetClose,
   Sheet,
 } from "@/components/ui/sheet";
 
 import Logo from "@/assets/logo.svg";
-import { updateReceivedRequests } from "@/redux/request/slice";
+
 import { socket } from "@/services/socket";
-import { useEffect, useState } from "react";
 
 export function Chat() {
   const [receivedRequests, setReceivedRequests] = useState<UserType[]>([]);
@@ -39,16 +40,22 @@ export function Chat() {
 
   const user = useAppSelector(selectAuth);
 
+  const receivedRequestsCount = useRef(receivedRequests.length);
+
   useEffect(() => {
     const handleReceivedRequests = (sender: UserType[]) => {
       setReceivedRequests(sender);
+
+      if (sender.length !== receivedRequestsCount.current) {
+        dispatch(updateReceivedRequests(sender.length));
+
+        receivedRequestsCount.current = sender.length;
+      }
     };
 
     const handleSentRequests = (sender: UserType[]) => {
       setSentRequests(sender);
     };
-
-    dispatch(updateReceivedRequests(receivedRequests.length));
 
     socket.emit("getReceivedFriendRequest", user?.id);
 
@@ -94,7 +101,7 @@ export function Chat() {
               </Button>
             </SheetFooter>
             <p className="text-primary/60 text-center w-fit px-5 py-2 bg-accent/70 rounded-full m-auto mt-10 cursor-not-allowed">
-              ...em breve
+              ...soon
             </p>
           </SheetContent>
         </Sheet>
