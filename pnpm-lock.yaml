@@ -62,6 +62,9 @@ dependencies:
   date-fns:
     specifier: ^2.30.0
     version: 2.30.0
+  emoji-picker-react:
+    specifier: ^4.7.12
+    version: 4.7.12(react@18.2.0)
   gsap:
     specifier: ^3.12.2
     version: 3.12.2
@@ -2314,6 +2317,16 @@ packages:
     resolution: {integrity: sha512-+ozvXuamBhDOKvMNUQvecxfbyICmIAwS4GpLmR0bsiSBlGnLaOcs2Cj7J8XSbW+YEaN3Xl3ffgpm+srTUWFwFQ==}
     dev: true
 
+  /emoji-picker-react@4.7.12(react@18.2.0):
+    resolution: {integrity: sha512-SV625gwJHk3z2H62Iy03MISvP6jcSbYW6IqY23mWDX3rnfE0Mb9UfMdzf3pB2C9c1ruU9qe+L6S0deSZsab1cA==}
+    engines: {node: '>=10'}
+    peerDependencies:
+      react: '>=16'
+    dependencies:
+      flairup: 0.0.37
+      react: 18.2.0
+    dev: false
+
   /engine.io-client@6.5.3:
     resolution: {integrity: sha512-9Z0qLB0NIisTRt1DZ/8U2k12RJn8yls/nXMZLn+/N8hANT3TcYjKFKcwbw5zFQiN4NTde3TSY9zb79e1ij6j9Q==}
     dependencies:
@@ -2535,6 +2548,10 @@ packages:
       locate-path: 6.0.0
       path-exists: 4.0.0
     dev: true
+
+  /flairup@0.0.37:
+    resolution: {integrity: sha512-GY7coNGpJQczEIfBsgByKhkclQZC2OosDyyGTfFfm2rXEzwq7MbWQgGo/GwM7TdU53Ow4rPznKPMC8Q3iympjQ==}
+    dev: false
 
   /flat-cache@3.2.0:
     resolution: {integrity: sha512-CYcENa+FtcUKLmhhqyctpclsq7QF38pKjZHsGNiSQF5r4FtoKDWabFDl3hzaEQMvT1LHEysw5twgLvpYYb4vbw==}
