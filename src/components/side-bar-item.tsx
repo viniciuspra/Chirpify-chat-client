@@ -55,8 +55,8 @@ export function SideBarItem({
           >
             <Icon className="w-7 h-7" />
             {tooltip === "Requests" && receivedRequestCount > 0 && (
-              <span className="absolute text-sm w-5 h-5 flex items-center justify-center bottom-0 right-0 bg-red-500 rounded-full">
-                {receivedRequestCount}
+              <span className="absolute text-sm w-5 h-5 flex items-center justify-center bottom-0 right-0 bg-red-500 rounded-full p-1">
+                {receivedRequestCount > 8 ? "9+" : receivedRequestCount}
               </span>
             )}
           </TooltipTrigger>
