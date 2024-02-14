@@ -49,7 +49,7 @@ export function MessagePanel() {
       }
     };
 
-    if (user) {
+    if (user && user.id) {
       setUserId(user.id);
     }
 
