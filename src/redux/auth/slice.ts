@@ -8,7 +8,7 @@ import { toast } from "react-toastify";
 import { toastOptions } from "@/configs/toastOptions";
 
 type AuthUser = {
-  id: string;
+  id?: string;
   username: string;
   password: string;
 };
