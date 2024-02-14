@@ -1,5 +1,10 @@
 import { FC, Suspense, lazy, useEffect } from "react";
-import { BrowserRouter } from "react-router-dom";
+import {
+  Route,
+  RouterProvider,
+  createBrowserRouter,
+  createRoutesFromElements,
+} from "react-router-dom";
 import { Loading } from "@/components/loading";
 
 import { useAppDispatch, useAppSelector } from "@/redux/hooks";
@@ -11,7 +16,6 @@ const AuthRoutes: FC = lazy(() => import("./auth.routes"));
 
 export const AppRoutes: FC = () => {
   const user = useAppSelector(selectAuth);
-
   const dispatch = useAppDispatch();
 
   useEffect(() => {
@@ -20,15 +24,22 @@ export const AppRoutes: FC = () => {
 
     if (user && token) {
       api.defaults.headers.common["Authorization"] = `Bearer ${token}`;
-
       dispatch(login({ user: JSON.parse(user), token }));
     }
   }, [dispatch]);
-  return (
-    <BrowserRouter>
-      <Suspense fallback={<Loading />}>
-        {user ? <ChatRoutes /> : <AuthRoutes />}
-      </Suspense>
-    </BrowserRouter>
+
+  const router = createBrowserRouter(
+    createRoutesFromElements(
+      <Route
+        path="/"
+        element={
+          <Suspense fallback={<Loading />}>
+            {user ? <ChatRoutes /> : <AuthRoutes />}
+          </Suspense>
+        }
+      />
+    )
   );
+
+  return <RouterProvider router={router} />;
 };
