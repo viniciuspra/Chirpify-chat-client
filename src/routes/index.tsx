@@ -1,10 +1,5 @@
 import { FC, Suspense, lazy, useEffect } from "react";
-import {
-  Route,
-  RouterProvider,
-  createBrowserRouter,
-  createRoutesFromElements,
-} from "react-router-dom";
+import { BrowserRouter } from "react-router-dom";
 import { Loading } from "@/components/loading";
 
 import { useAppDispatch, useAppSelector } from "@/redux/hooks";
@@ -28,18 +23,11 @@ export const AppRoutes: FC = () => {
     }
   }, [dispatch]);
 
-  const router = createBrowserRouter(
-    createRoutesFromElements(
-      <Route
-        path="/"
-        element={
-          <Suspense fallback={<Loading />}>
-            {user ? <ChatRoutes /> : <AuthRoutes />}
-          </Suspense>
-        }
-      />
-    )
+  return (
+    <BrowserRouter>
+      <Suspense fallback={<Loading />}>
+        {user ? <ChatRoutes /> : <AuthRoutes />}
+      </Suspense>
+    </BrowserRouter>
   );
-
-  return <RouterProvider router={router} />;
 };
