@@ -14,6 +14,7 @@ import { socket } from "@/services/socket";
 
 import { MoreVertical } from "lucide-react";
 import emptyInbox from "../assets/empty-inbox-outline.svg";
+import { api } from "@/services/api";
 
 export interface Messages {
   id: string;
@@ -83,7 +84,13 @@ export function MessagePanel() {
                   } h-2.5 w-2.5 rounded-full absolute bottom-1 right-1 z-10`}
                 ></div>
                 <Avatar className="w-14 h-14">
-                  <AvatarImage src={activeChatUser.avatar} />
+                  <AvatarImage
+                    src={
+                      activeChatUser.avatar
+                        ? `${api.defaults.baseURL}/files/${activeChatUser.avatar}`
+                        : ""
+                    }
+                  />
                   <AvatarFallback>
                     {activeChatUser.username[0] + activeChatUser.username[1]}
                   </AvatarFallback>

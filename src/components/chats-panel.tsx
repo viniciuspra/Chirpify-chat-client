@@ -26,6 +26,7 @@ import { selectAuth } from "@/redux/auth/slice";
 import { Messages } from "@/components/message-panel";
 
 import { Plus, Search } from "lucide-react";
+import { api } from "@/services/api";
 export type UserType = {
   id: string;
   fullname?: string;
@@ -144,7 +145,7 @@ export function ChatsPanel() {
                                   } h-2 w-2 rounded-full absolute bottom-0 right-0 z-10`}
                                 ></div>
                                 <Avatar>
-                                  <AvatarImage src={contact.avatar} />
+                                  <AvatarImage src={contact.avatar ? `${api.defaults.baseURL}/files/${contact.avatar}` : ""} />
                                   <AvatarFallback className="uppercase">
                                     {contact.username[0] + contact.username[1]}
                                   </AvatarFallback>

@@ -35,9 +35,13 @@ import { toastOptions } from "@/configs/toastOptions";
 import { useAppDispatch, useAppSelector } from "@/redux/hooks";
 import { logout, selectAuth } from "@/redux/auth/slice";
 import { LogOut, Pencil } from "lucide-react";
+import { selectAvatar, setAvatarPreview } from "@/redux/avatar/slice";
+
+import avatarPlaceholder from "../assets/avatar_placeholder.svg";
 
 interface ProfilePanelProps extends UserType {
   fullname: string;
+  avatar: string;
 }
 
 export function ProfilePanel() {
@@ -49,7 +53,10 @@ export function ProfilePanel() {
   const [oldPasswordError, setOldPasswordError] = useState("");
   const [isEditing, setIsEditing] = useState(false);
 
+  const [avatarFile, setAvatarFile] = useState<File | null>(null);
+
   const AuthUser = useAppSelector(selectAuth);
+  const { avatarPreview } = useAppSelector(selectAvatar);
   const dispatch = useAppDispatch();
 
   const handleLogOut = () => {
@@ -66,8 +73,41 @@ export function ProfilePanel() {
     setNewPasswordError("");
   };
 
+  const handleFileChange = (e: ChangeEvent<HTMLInputElement>) => {
+    const file = e.target.files?.[0];
+    if (file) {
+      setAvatarFile(file);
+
+      const imagePreview = URL.createObjectURL(file);
+      dispatch(setAvatarPreview(imagePreview));
+    }
+    console.log(file);
+  };
+
   const handleSubmit = () => {
-    if (fullname && fullname.trim() !== "") {
+    console.log(avatarFile);
+    if (avatarFile) {
+      const formData = new FormData();
+      formData.append("file", avatarFile);
+
+      api
+        .patch("/api/user/avatar", formData)
+        .then(() => {
+          toast.success("Avatar updated successfully.", toastOptions);
+        })
+        .catch((error) => {
+          if (error.response) {
+            toast.error(error.response.data.message, toastOptions);
+          } else {
+            toast.error(
+              "Error updating avatar. Please try again.",
+              toastOptions
+            );
+          }
+        });
+    }
+
+    if (fullname && fullname.trim() !== "" && fullname !== user?.fullname) {
       api
         .put("/api/user/update", { fullname })
         .then(() =>
@@ -95,19 +135,23 @@ export function ProfilePanel() {
       return;
     }
 
-    api
-      .put("/api/user/update", { newPassword, oldPassword })
-      .then(() => toast.success("Password changed successfully.", toastOptions))
-      .catch((error) => {
-        if (error.response) {
-          toast.error(error.response.data.message, toastOptions);
-        } else {
-          toast.error(
-            "Error changing password. Please try again.",
-            toastOptions
-          );
-        }
-      });
+    if (newPassword && oldPassword) {
+      api
+        .put("/api/user/update", { newPassword, oldPassword })
+        .then(() =>
+          toast.success("Password changed successfully.", toastOptions)
+        )
+        .catch((error) => {
+          if (error.response) {
+            toast.error(error.response.data.message, toastOptions);
+          } else {
+            toast.error(
+              "Error changing password. Please try again.",
+              toastOptions
+            );
+          }
+        });
+    }
   };
 
   const handleEditClick = () => {
@@ -136,13 +180,27 @@ export function ProfilePanel() {
           Profile
         </h1>
       </header>
-      <div className="p-3 flex flex-col flex-1">
-        <Avatar className="w-24 h-24">
-          <AvatarImage src={user?.avatar} />
-          <AvatarFallback className="uppercase text-2xl">
-            {user && user?.username[0] + user?.username[1]}
-          </AvatarFallback>
-        </Avatar>
+      <div className="p-4 flex flex-col flex-1">
+        <label className="relative cursor-pointer flex py-4 rounded-full w-fit h-24 items-center justify-center group transition-all">
+          <div className="absolute w-24 h-24 rounded-full bg-white/20 dark:bg-muted/30 text-white flex items-center justify-center transition-all z-10 opacity-0 group-hover:opacity-100">
+            <Pencil />
+          </div>
+          <input type="file" className="sr-only" onChange={handleFileChange} />
+          <Avatar className="w-24 h-24 group-hover:bg-muted/30">
+            <AvatarImage
+              src={
+                avatarPreview
+                  ? avatarPreview
+                  : user?.avatar
+                  ? `${api.defaults.baseURL}/files/${user.avatar}`
+                  : avatarPlaceholder
+              }
+            />
+            <AvatarFallback className="uppercase text-2xl group-hover:bg-muted/30">
+              {user && user?.username[0] + user?.username[1]}
+            </AvatarFallback>
+          </Avatar>
+        </label>
         <div className="mt-4 px-2">
           <p className="text-primary/70">Full Name</p>
           <div className="flex justify-between p-3">
@@ -177,7 +235,12 @@ export function ProfilePanel() {
             )}
           </div>
 
-          <div className="flex justify-end mt-5 gap-2">
+          <p className="text-primary/70">Username</p>
+          <div className="flex justify-between p-3">
+            <p className="text-lg font-semibold">@{user?.username}</p>
+          </div>
+
+          <div className="flex justify-end mt-10 gap-2">
             <Dialog>
               <DialogTrigger asChild>
                 <Button variant="outline">Edit Password</Button>

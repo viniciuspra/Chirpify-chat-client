@@ -11,6 +11,7 @@ import { useAppSelector } from "@/redux/hooks";
 import { selectAuth } from "@/redux/auth/slice";
 import { Messages } from "./message-panel";
 import { formatDistanceToNow } from "date-fns";
+import { api } from "@/services/api";
 
 interface ContactCardProps {
   id?: string;
@@ -31,6 +32,7 @@ export function ContactCard({
 }: ContactCardProps) {
   const [isAdded, setIsAdded] = useState(false);
   const [timeAgo, setTimeAgo] = useState("");
+  const [avatarUrl, setAvatarUrl] = useState("");
 
   const user = useAppSelector(selectAuth);
   const senderId = user?.id;
@@ -51,6 +53,10 @@ export function ContactCard({
   };
 
   useEffect(() => {
+    if (imageUrl) {
+      setAvatarUrl(`${api.defaults.baseURL}/files/${imageUrl}`);
+    }
+
     if (lastMessage) {
       const sendAt = new Date(lastMessage?.createdAt);
       setTimeAgo(
@@ -71,7 +77,7 @@ export function ContactCard({
       <div className="flex justify-between items-center w-full ">
         <div className="flex items-center gap-3">
           <Avatar className="w-14 h-14">
-            <AvatarImage src={imageUrl} />
+            <AvatarImage src={avatarUrl} />
             <AvatarFallback className="uppercase">
               {username[0] + username[1]}
             </AvatarFallback>
