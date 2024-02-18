@@ -64,8 +64,11 @@ export function Register() {
 
   return (
     <div className="h-screen w-screen flex flex-col items-center justify-center md:px-14">
-      <div className="flex-1 bg-secondary w-full max-w-[600px] max-h-[690px] md:py-4 md:px-16 rounded-lg py-2">
-        <form onSubmit={handleSubmit} className="flex flex-col h-full p-5">
+      <div className="bg-secondary w-full sm:max-w-[600px] sm:max-h-[690px] rounded-lg sm:py-16 px-10 flex flex-1 items-center justify-center">
+        <form
+          onSubmit={handleSubmit}
+          className="flex flex-col sm:h-full p-5 space-y-10 flex-1"
+        >
           <Logo />
           <div className="flex-1 flex flex-col justify-center space-y-6">
             <LabelInput
