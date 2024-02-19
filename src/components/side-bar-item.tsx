@@ -50,10 +50,10 @@ export function SideBarItem({
         >
           <TooltipTrigger
             data-selected={isSelected}
-            className="font-bold relative cursor-pointer w-12 h-12 transition-colors rounded-2xl mt-2 flex items-center justify-center data-[selected=true]:bg-slate-500/40 hover:bg-slate-500/20"
+            className="font-bold relative cursor-pointer sm:w-12 sm:h-12 w-8 h-8 transition-colors rounded-2xl mt-2 flex items-center justify-center data-[selected=true]:bg-slate-500/40 hover:bg-slate-500/20"
             onClick={HandleClick}
           >
-            <Icon className="w-7 h-7" />
+            <Icon className="sm:w-7 sm:h-7" />
             {tooltip === "Requests" && receivedRequestCount > 0 && (
               <span className="absolute text-sm w-5 h-5 flex items-center justify-center bottom-0 right-0 bg-red-500 rounded-full p-1">
                 {receivedRequestCount > 8 ? "9+" : receivedRequestCount}
