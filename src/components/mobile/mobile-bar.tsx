@@ -31,19 +31,23 @@ export function MobileBar({ tooltip }: ISideBarItemProps) {
   return (
     <TooltipProvider>
       <Tooltip>
-        <div className="flex flex-col w-full h-10">
+        <div className="flex flex-col w-full h-10 text-white/70">
           <TooltipTrigger
             className={`flex-1 font-bold relative cursor-pointer transition-colors active:bg-red-100/30 flex items-center justify-center ${
-              isSelected ? "border-b-2 border-logo text-logo" : ""
+              isSelected ? "border-b-[3px] border-logo text-logo" : ""
+            } ${
+              tooltip === "Requests" && receivedRequestCount > 0 ? "pr-4" : ""
             }`}
             onClick={HandleClick}
           >
             {tooltip === "Profile" ? <User /> : <p>{tooltip}</p>}
 
             {tooltip === "Requests" && receivedRequestCount > 0 && (
-              <span className="absolute text-sm w-5 h-5 flex items-center justify-center bottom-0 right-0 bg-red-500 rounded-full p-1">
-                {receivedRequestCount > 8 ? "9+" : receivedRequestCount}
-              </span>
+              <span
+                className={`absolute w-1.5 h-1.5 flex items-center justify-center right-1.5 rounded-full ${
+                  isSelected ? "bg-logo" : "bg-white"
+                }`}
+              />
             )}
           </TooltipTrigger>
         </div>

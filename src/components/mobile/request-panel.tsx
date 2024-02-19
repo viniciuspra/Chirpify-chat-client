@@ -1,38 +1,27 @@
-import { UserType } from "./chats-panel";
-import { RequestCard } from "./request-card";
-
-import { ScrollArea, ScrollBar } from "@/components/ui/scroll-area";
 import {
   Accordion,
   AccordionItem,
   AccordionTrigger,
   AccordionContent,
 } from "@/components/ui/accordion";
+import { RequestCard } from "@/components/request-card";
+import { ScrollArea, ScrollBar } from "@/components/ui/scroll-area";
 
 import { useAppSelector } from "@/redux/hooks";
-
 import { selectRequest } from "@/redux/request/slice";
 
-export interface RequestPanelProp {
-  receivedRequests: UserType[];
-  sentRequests: UserType[];
-}
+import { RequestPanelProp } from "../request-panel";
 
-export function RequestPanel({
+export function RequestMPanel({
   receivedRequests,
   sentRequests,
 }: RequestPanelProp) {
   const { receivedRequestCount } = useAppSelector(selectRequest);
 
   return (
-    <div className="bg-secondary/70 min-w-[192px] sm:w-[349px] ml-2 rounded-md shadow-lg flex flex-col border">
-      <header className="flex items-center justify-between h-24 border-b border-muted px-4 bg-slate-500/10">
-        <h1 className="flex items-start gap-2 font-semibold text-3xl">
-          Requests
-        </h1>
-      </header>
+    <div className="bg-secondary/70 rounded-md flex flex-col border">
       <div className="p-2">
-        <Accordion type="single" collapsible defaultValue="received">
+        <Accordion type="multiple">
           <AccordionItem value="received">
             <AccordionTrigger className="text-lg p-3 hover:bg-secondary rounded-md group">
               <div className="flex gap-3 items-center">

@@ -1,6 +1,8 @@
 import { useEffect, useState } from "react";
 
 import { socket } from "@/services/socket";
+import { api } from "@/services/api";
+
 import {
   Command,
   CommandInput,
@@ -23,27 +25,9 @@ import { useAppDispatch, useAppSelector } from "@/redux/hooks";
 import { setActiveChatUser } from "@/redux/chat/slice";
 import { selectAuth } from "@/redux/auth/slice";
 
-import { Messages } from "@/components/message-panel";
-
 import { Plus, Search } from "lucide-react";
-import { api } from "@/services/api";
 
-export type UserType = {
-  id: string;
-  fullname?: string;
-  username: string;
-  isOnline?: boolean;
-  avatar?: string;
-};
-
-export type UserChats = {
-  id: string;
-  name: string;
-  image: string;
-  lastMessage: Messages;
-  isGroup: boolean;
-  users: UserType[];
-};
+import { UserChats, UserType } from "../chats-panel";
 
 export function ChatsMPanel() {
   const [open, setOpen] = useState(false);
@@ -63,6 +47,12 @@ export function ChatsMPanel() {
   const handleInputChange = (newSearch: string) => {
     setLoading(true);
     setNewSearch(newSearch);
+  };
+
+  const handleBlur = () => {
+    if (document.activeElement instanceof HTMLInputElement) {
+      document.activeElement.blur();
+    }
   };
 
   const handleSetChatId = (username: string) => {
@@ -99,7 +89,7 @@ export function ChatsMPanel() {
   }, [newSearch, user, dispatch, userChats, open]);
 
   return (
-    <div className="bg-secondary/70 ml-2 rounded-md shadow-lg flex flex-col border h-full">
+    <div className="bg-secondary/70 rounded-md flex flex-col border h-full">
       <div className="flex flex-col p-4 max-h-[90%] overflow-hidden">
         <div className="flex items-center gap-2 mt-2 mb-6">
           <div className="flex flex-1 items-center gap-3 h-12 border-none bg-accent/30 px-4 rounded-md text-lg">
@@ -108,6 +98,7 @@ export function ChatsMPanel() {
               type="text"
               className="bg-transparent outline-none"
               placeholder="Search chats..."
+              onBlur={handleBlur}
             />
           </div>
           <Popover open={open} onOpenChange={setOpen}>
@@ -126,6 +117,7 @@ export function ChatsMPanel() {
                   <CommandInput
                     placeholder="search contacts..."
                     onValueChange={handleInputChange}
+                    onBlur={handleBlur}
                   />
                   <CommandList>
                     <CommandEmpty>

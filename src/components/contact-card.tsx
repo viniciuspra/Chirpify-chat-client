@@ -66,7 +66,7 @@ export function ContactCard({
         )
       );
     }
-  }, [lastMessage]);
+  }, [lastMessage, imageUrl]);
 
   return (
     <div

@@ -24,8 +24,6 @@ import { Button } from "@/components/ui/button";
 import { Label } from "@/components/ui/label";
 import { Input } from "@/components/ui/input";
 
-import { UserType } from "@/components/chats-panel";
-
 import { socket } from "@/services/socket";
 import { api } from "@/services/api";
 
@@ -38,14 +36,10 @@ import { selectAvatar, setAvatarPreview } from "@/redux/avatar/slice";
 
 import { LogOut, Pencil } from "lucide-react";
 
-import avatarPlaceholder from "../assets/avatar_placeholder.svg";
+import avatarPlaceholder from "@/assets/avatar_placeholder.svg";
+import { ProfilePanelProps } from "../profile-panel";
 
-export interface ProfilePanelProps extends UserType {
-  fullname: string;
-  avatar: string;
-}
-
-export function ProfilePanel() {
+export function ProfileMPanel() {
   const [user, setUser] = useState<ProfilePanelProps | null>(null);
   const [fullname, setFullname] = useState(user?.fullname);
   const [newPassword, setNewPassword] = useState("");
@@ -83,6 +77,12 @@ export function ProfilePanel() {
       dispatch(setAvatarPreview(imagePreview));
     }
     console.log(file);
+  };
+
+  const handleBlur = () => {
+    if (document.activeElement instanceof HTMLInputElement) {
+      document.activeElement.blur();
+    }
   };
 
   const handleSubmit = () => {
@@ -175,19 +175,14 @@ export function ProfilePanel() {
   }, [AuthUser]);
 
   return (
-    <div className="bg-secondary/70 md:w-[349px] ml-2 rounded-md shadow-lg flex flex-col border">
-      <header className="flex items-center justify-between h-24 border-b border-muted px-4 bg-slate-500/10">
-        <h1 className="flex items-start gap-2 font-semibold text-3xl">
-          Profile
-        </h1>
-      </header>
-      <div className="p-4 flex flex-col flex-1">
-        <label className="relative cursor-pointer flex py-4 rounded-full w-fit h-24 items-center justify-center group transition-all">
+    <div className="bg-secondary/70 rounded-md flex flex-col border">
+      <div className="py-4 px-6 flex flex-col flex-1 mt-6">
+        <label className="relative rounded-full cursor-pointer flex py-4 w-fit h-24 items-center justify-center group transition-all">
           <div className="absolute w-24 h-24 rounded-full bg-white/20 dark:bg-muted/30 text-white flex items-center justify-center transition-all z-10 opacity-0 group-hover:opacity-100">
             <Pencil />
           </div>
           <input type="file" className="sr-only" onChange={handleFileChange} />
-          <Avatar className="w-24 h-24 group-hover:bg-muted/30">
+          <Avatar className="w-24 h-24 group-hover:bg-muted/30 rounded-full">
             <AvatarImage
               src={
                 avatarPreview
@@ -202,7 +197,7 @@ export function ProfilePanel() {
             </AvatarFallback>
           </Avatar>
         </label>
-        <div className="mt-4 px-2">
+        <div className="mt-10 space-y-2">
           <p className="text-primary/70">Full Name</p>
           <div className="flex justify-between p-3">
             {!isEditing ? (
@@ -222,6 +217,7 @@ export function ProfilePanel() {
                   autoFocus
                   className="bg-transparent text-lg font-semibold p-2 mb-2"
                   onChange={(e) => setFullname(e.target.value)}
+                  onBlur={handleBlur}
                 />
                 <div className="flex items-center justify-end gap-4">
                   <button
@@ -235,10 +231,11 @@ export function ProfilePanel() {
               </div>
             )}
           </div>
-
           <p className="text-primary/70">Username</p>
           <div className="flex justify-between p-3">
-            <p className="text-lg font-semibold">@{user?.username}</p>
+            <p className="text-lg font-semibold text-white/90">
+              @{user?.username}
+            </p>
           </div>
 
           <div className="flex justify-end mt-10 gap-2">
@@ -246,7 +243,7 @@ export function ProfilePanel() {
               <DialogTrigger asChild>
                 <Button variant="outline">Edit Password</Button>
               </DialogTrigger>
-              <DialogContent className="sm:max-w-[425px]">
+              <DialogContent className="max-w-[80%]">
                 <DialogHeader>
                   <DialogTitle>Change password</DialogTitle>
                   <DialogDescription>
@@ -264,6 +261,7 @@ export function ProfilePanel() {
                       placeholder="min 6 characters"
                       type="password"
                       onChange={handleOldPasswordChange}
+                      onBlur={handleBlur}
                     />
                     {oldPasswordError && (
                       <p className="text-red-500 text-sm w-full px-2">
@@ -280,6 +278,7 @@ export function ProfilePanel() {
                       placeholder="min 6 characters"
                       type="password"
                       onChange={handleNewPasswordChange}
+                      onBlur={handleBlur}
                     />
                     {newPasswordError && (
                       <p className="text-red-500 text-sm w-full px-2">
@@ -300,7 +299,7 @@ export function ProfilePanel() {
               <AlertDialogTrigger className="inline-flex items-center h-9 px-4 py-2 justify-center whitespace-nowrap rounded-md text-sm font-medium transition-colors focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:pointer-events-none disabled:opacity-50 bg-destructive text-destructive-foreground shadow-sm hover:bg-destructive/90">
                 Save changes
               </AlertDialogTrigger>
-              <AlertDialogContent>
+              <AlertDialogContent className="max-w-[80%]">
                 <AlertDialogHeader>
                   <AlertDialogTitle>
                     Are you sure you want to save the changes?
@@ -322,7 +321,7 @@ export function ProfilePanel() {
           <AlertDialogTrigger className="text-red-500 hover:text-red-500 p-5 flex gap-3 font-semibold border border-input bg-transparent shadow-md hover:bg-accent hover:text-accent-foreground h-3 items-center rounded-sm">
             Log Out <LogOut size={18} />
           </AlertDialogTrigger>
-          <AlertDialogContent>
+          <AlertDialogContent className="max-w-[80%]">
             <AlertDialogHeader>
               <AlertDialogTitle>
                 Are you sure you want to logout?

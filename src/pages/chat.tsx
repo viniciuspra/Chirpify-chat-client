@@ -28,7 +28,11 @@ import Logo from "@/assets/logo.svg";
 import { socket } from "@/services/socket";
 import { selectWindow, setWindowSize } from "@/redux/window/slice";
 import { MobileBar } from "@/components/mobile/mobile-bar";
+
 import { ChatsMPanel } from "@/components/mobile/chats-panel";
+import { ProfileMPanel } from "@/components/mobile/profile-panel";
+import { ContactMPanel } from "@/components/mobile/contact-panel";
+import { RequestMPanel } from "@/components/mobile/request-panel";
 
 export function Chat() {
   const [receivedRequests, setReceivedRequests] = useState<UserType[]>([]);
@@ -138,14 +142,14 @@ export function Chat() {
           </div>
 
           {activePanel === "Chats" && <ChatsMPanel />}
-          {activePanel === "Contacts" && <ContactPanel />}
+          {activePanel === "Contacts" && <ContactMPanel />}
           {activePanel === "Requests" && (
-            <RequestPanel
+            <RequestMPanel
               receivedRequests={receivedRequests}
               sentRequests={sentRequests}
             />
           )}
-          {activePanel === "Profile" && <ProfilePanel />}
+          {activePanel === "Profile" && <ProfileMPanel />}
         </main>
       ) : (
         <main className="flex flex-1 space-x-2 overflow-hidden">
