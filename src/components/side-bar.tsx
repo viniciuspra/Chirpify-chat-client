@@ -1,8 +1,9 @@
 import { SideBarItem } from "./side-bar-item";
 
-import { Inbox, AtSign, UserCircle2, Heart } from "lucide-react";
-import { useAppDispatch } from "@/redux/hooks";
+import { Inbox, AtSign, UserCircle2, Heart, MoreVertical } from "lucide-react";
+import { useAppDispatch, useAppSelector } from "@/redux/hooks";
 import { setActivePanel } from "@/redux/panel/slice";
+import { selectWindow } from "@/redux/window/slice";
 
 export type TooltipContent = "Chats" | "Contacts" | "Requests" | "Profile";
 
@@ -15,23 +16,30 @@ const iconMapping: Record<TooltipContent, React.ElementType> = {
 
 export function SideBar({ ...props }) {
   const dispatch = useAppDispatch();
+  const { isMobile } = useAppSelector(selectWindow);
 
   const items: TooltipContent[] = ["Chats", "Contacts", "Requests", "Profile"];
 
   return (
     <div
-      className="flex flex-col flex-1 w-full items-center p-4 space-y-6"
+      className="flex sm:flex-col flex-1 w-full items-center sm:p-4 sm:space-y-6"
       {...props}
     >
-      {items.map((item, index) => (
-        <SideBarItem
-          key={index}
-          icon={iconMapping[item]}
-          tooltip={item}
-          onSelect={() => dispatch(setActivePanel(item))}
-          isLastItem={index === items.length - 1}
-        />
-      ))}
+      {isMobile ? (
+        <div className="flex flex-1 items-center justify-end">
+          <MoreVertical className="cursor-pointer active:bg-accent transition-colors w-10 h-10 rounded-full p-2" />
+        </div>
+      ) : (
+        items.map((item, index) => (
+          <SideBarItem
+            key={index}
+            icon={iconMapping[item]}
+            tooltip={item}
+            onSelect={() => dispatch(setActivePanel(item))}
+            isLastItem={index === items.length - 1}
+          />
+        ))
+      )}
     </div>
   );
 }

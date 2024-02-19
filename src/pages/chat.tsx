@@ -1,12 +1,12 @@
 import { useEffect, useRef, useState } from "react";
 
 import { logout, selectAuth } from "@/redux/auth/slice";
-import { selectActivePanel } from "@/redux/panel/slice";
+import { selectActivePanel, setActivePanel } from "@/redux/panel/slice";
 import { updateReceivedRequests } from "@/redux/request/slice";
 import { useAppDispatch, useAppSelector } from "@/redux/hooks";
 
 import { Button } from "@/components/ui/button";
-import { SideBar } from "@/components/side-bar";
+import { SideBar, TooltipContent } from "@/components/side-bar";
 import { ChatsPanel, UserType } from "@/components/chats-panel";
 import { ModeToggle } from "@/components/mode-toggle";
 import { ContactPanel } from "@/components/contact-panel";
@@ -26,12 +26,16 @@ import {
 import Logo from "@/assets/logo.svg";
 
 import { socket } from "@/services/socket";
+import { selectWindow, setWindowSize } from "@/redux/window/slice";
+import { MobileBar } from "@/components/mobile/mobile-bar";
+import { ChatsMPanel } from "@/components/mobile/chats-panel";
 
 export function Chat() {
   const [receivedRequests, setReceivedRequests] = useState<UserType[]>([]);
   const [sentRequests, setSentRequests] = useState<UserType[]>([]);
-  const activePanel = useAppSelector(selectActivePanel);
 
+  const activePanel = useAppSelector(selectActivePanel);
+  const { isMobile } = useAppSelector(selectWindow);
   const dispatch = useAppDispatch();
 
   const handleLogOut = () => {
@@ -42,7 +46,20 @@ export function Chat() {
 
   const receivedRequestsCount = useRef(receivedRequests.length);
 
+  const items: TooltipContent[] = ["Profile", "Chats", "Contacts", "Requests"];
+
   useEffect(() => {
+    const handleResize = () => {
+      dispatch(
+        setWindowSize({
+          width: window.innerWidth,
+          height: window.innerHeight,
+        })
+      );
+    };
+
+    window.addEventListener("resize", handleResize);
+
     const handleReceivedRequests = (sender: UserType[]) => {
       setReceivedRequests(sender);
 
@@ -68,15 +85,16 @@ export function Chat() {
     return () => {
       socket.off("getReceivedFriendRequest", handleReceivedRequests);
       socket.off("getSentFriendRequest", handleSentRequests);
+      window.removeEventListener("resize", handleResize);
     };
   }, [user, receivedRequests, dispatch]);
 
   return (
-    <div className="h-screen flex p-4 overflow-hidden">
-      <div className="flex flex-col bg-secondary/70 w-24 rounded-md items-center p-4 shadow-lg border">
+    <div className="h-screen flex p-4 overflow-hidden flex-col sm:flex-row">
+      <div className="flex sm:flex-col bg-secondary/70 sm:w-24 w-full sm:h-full h-20 rounded-md items-center p-4 shadow-lg border">
         <Sheet>
           <SheetTrigger asChild>
-            <Button className="w-16 h-16 cursor-pointer p-2 rounded-md flex items-center justify-center hover:brightness-110 transition-all bg-slate-500/20 hover:bg-slate-500/20">
+            <Button className="sm:w-16 sm:h-16 w-12 h-12 cursor-pointer p-2 rounded-md flex items-center justify-center hover:brightness-110 transition-all bg-slate-500/20 hover:bg-slate-500/20">
               <img src={Logo} alt="logo chirpify" className="w-10" />
             </Button>
           </SheetTrigger>
@@ -107,18 +125,42 @@ export function Chat() {
         </Sheet>
         <SideBar />
       </div>
-      <main className="flex flex-1 space-x-2 overflow-hidden">
-        {activePanel === "Chats" && <ChatsPanel />}
-        {activePanel === "Contacts" && <ContactPanel />}
-        {activePanel === "Requests" && (
-          <RequestPanel
-            receivedRequests={receivedRequests}
-            sentRequests={sentRequests}
-          />
-        )}
-        {activePanel === "Profile" && <ProfilePanel />}
-        <MessagePanel />
-      </main>
+      {isMobile ? (
+        <main className="bg-muted flex flex-col flex-1 mt-4 rounded-sm overflow-hidden">
+          <div className="flex">
+            {items.map((item, index) => (
+              <MobileBar
+                key={index}
+                tooltip={item}
+                onSelect={() => dispatch(setActivePanel(item))}
+              />
+            ))}
+          </div>
+
+          {activePanel === "Chats" && <ChatsMPanel />}
+          {activePanel === "Contacts" && <ContactPanel />}
+          {activePanel === "Requests" && (
+            <RequestPanel
+              receivedRequests={receivedRequests}
+              sentRequests={sentRequests}
+            />
+          )}
+          {activePanel === "Profile" && <ProfilePanel />}
+        </main>
+      ) : (
+        <main className="flex flex-1 space-x-2 overflow-hidden">
+          {activePanel === "Chats" && <ChatsPanel />}
+          {activePanel === "Contacts" && <ContactPanel />}
+          {activePanel === "Requests" && (
+            <RequestPanel
+              receivedRequests={receivedRequests}
+              sentRequests={sentRequests}
+            />
+          )}
+          {activePanel === "Profile" && <ProfilePanel />}
+          <MessagePanel />
+        </main>
+      )}
     </div>
   );
 }
