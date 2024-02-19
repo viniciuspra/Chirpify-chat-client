@@ -5,6 +5,7 @@ import requestReducer from "./request/slice";
 import panelsReducer from "./panel/slice";
 import chatReducer from "./chat/slice";
 import avatarReducer from "./avatar/slice";
+import windowReducer from "./window/slice";
 
 export const store = configureStore({
   reducer: {
@@ -12,7 +13,8 @@ export const store = configureStore({
     request: requestReducer,
     panels: panelsReducer,
     chat: chatReducer,
-    avatar: avatarReducer
+    avatar: avatarReducer,
+    window: windowReducer
   },
 });
 
