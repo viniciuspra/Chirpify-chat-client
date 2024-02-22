@@ -49,12 +49,6 @@ export function ChatsMPanel() {
     setNewSearch(newSearch);
   };
 
-  const handleBlur = () => {
-    if (document.activeElement instanceof HTMLInputElement) {
-      document.activeElement.blur();
-    }
-  };
-
   const handleSetChatId = (username: string) => {
     socket.emit("getUser", username);
   };
@@ -98,7 +92,6 @@ export function ChatsMPanel() {
               type="text"
               className="bg-transparent outline-none"
               placeholder="Search chats..."
-              onBlur={handleBlur}
             />
           </div>
           <Popover open={open} onOpenChange={setOpen}>
@@ -117,7 +110,6 @@ export function ChatsMPanel() {
                   <CommandInput
                     placeholder="search contacts..."
                     onValueChange={handleInputChange}
-                    onBlur={handleBlur}
                   />
                   <CommandList>
                     <CommandEmpty>

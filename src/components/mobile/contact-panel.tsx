@@ -23,12 +23,6 @@ export function ContactMPanel() {
     socket.emit("searchUser", newSearch, currentUser?.id);
   };
 
-  const handleBlur = () => {
-    if (document.activeElement instanceof HTMLInputElement) {
-      document.activeElement.blur();
-    }
-  };
-
   useEffect(() => {
     const handleSearch = (result: UserType[]) => {
       setUsers(result);
@@ -54,7 +48,6 @@ export function ContactMPanel() {
             className="bg-transparent outline-none"
             placeholder="Search contacts..."
             onChange={(e) => handleInputChange(e.target.value)}
-            onBlur={handleBlur}
           />
         </div>
         <ScrollArea className="flex flex-col flex-1">
