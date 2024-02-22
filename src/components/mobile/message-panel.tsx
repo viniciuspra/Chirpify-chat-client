@@ -1,31 +1,25 @@
 import { useEffect, useState } from "react";
-import { selectActiveChatUser } from "@/redux/chat/slice";
-import { useAppSelector } from "@/redux/hooks";
+
+import { selectActiveChatUser, setActiveChatUser } from "@/redux/chat/slice";
+import { useAppDispatch, useAppSelector } from "@/redux/hooks";
 import { selectAuth } from "@/redux/auth/slice";
+
+import { MessageBubble } from "@/components/message-bubble";
+import { SendInput } from "@/components/send-input";
+import { Messages } from "@/components/message-panel";
+import { useTheme } from "@/components/theme-provider";
 
 import { Avatar, AvatarImage, AvatarFallback } from "@/components/ui/avatar";
 import { ScrollArea, ScrollBar } from "@/components/ui/scroll-area";
-import { useTheme } from "@/components/theme-provider";
 
-import { SendInput } from "./send-input";
-import { MessageBubble } from "./message-bubble";
-
-import emptyInbox from "../assets/empty-inbox-outline.svg";
+import emptyInbox from "@/components/assets/empty-inbox-outline.svg";
 
 import { socket } from "@/services/socket";
 import { api } from "@/services/api";
 
-import { MoreVertical } from "lucide-react";
+import { ArrowLeft, MoreVertical } from "lucide-react";
 
-export interface Messages {
-  id: string;
-  content: string;
-  userId: string;
-  chatId: string;
-  createdAt: Date;
-}
-
-export function MessagePanel() {
+export function MessageMPanel() {
   const [chatId, setChatId] = useState<string>("");
   const [userId, setUserId] = useState<string>("");
   const [emitted, setEmitted] = useState<boolean>(false);
@@ -35,6 +29,12 @@ export function MessagePanel() {
 
   const user = useAppSelector(selectAuth);
   const { activeChatUser } = useAppSelector(selectActiveChatUser);
+
+  const dispatch = useAppDispatch();
+
+  const cleanActiveChatUser = () => {
+    dispatch(setActiveChatUser(null));
+  };
 
   useEffect(() => {
     const handleGetChatId = (receivedChatId: string) => {
@@ -75,21 +75,20 @@ export function MessagePanel() {
       socket.off("getChatId", handleGetChatId);
       socket.off("getMessages", handleGetMessages);
     };
-  }, [activeChatUser, user, chatId, messages, userId, emitted]);
+  }, [activeChatUser, user, chatId, messages, emitted, userId]);
 
   return (
-    <div className="flex flex-col bg-secondary/70 flex-1 rounded-md shadow-lg border ml-2 justify-between relative">
+    <div className="flex flex-col bg-secondary/70 flex-1 rounded-md border justify-between relative">
       {activeChatUser ? (
         <>
           <header className="flex items-center justify-between h-24 border-b border-muted px-4 bg-slate-500/10 rounded-t-md absolute inset-0 z-50">
-            <div className="flex px-6 py-5 gap-5">
-              <div className="relative">
-                <div
-                  className={`${
-                    activeChatUser.isOnline ? "bg-green-500" : "bg-red-500"
-                  } h-2.5 w-2.5 rounded-full absolute bottom-1 right-1 z-10`}
-                ></div>
-                <Avatar className="w-14 h-14">
+            <div className="flex py-5 gap-5">
+              <button
+                className="relative flex items-center p-1.5 rounded-full active:bg-slate-400/40 transition-colors"
+                onClick={cleanActiveChatUser}
+              >
+                <ArrowLeft className="w-5 h-5" />
+                <Avatar className="w-11 h-11">
                   <AvatarImage
                     src={
                       activeChatUser.avatar
@@ -101,11 +100,16 @@ export function MessagePanel() {
                     {activeChatUser.username[0] + activeChatUser.username[1]}
                   </AvatarFallback>
                 </Avatar>
-              </div>
+                <div
+                  className={`${
+                    activeChatUser.isOnline ? "bg-green-500" : "bg-red-500"
+                  } h-2.5 w-2.5 rounded-full absolute bottom-1 right-1 z-10`}
+                ></div>
+              </button>
 
               <div className="flex flex-col items-start font-semibold justify-center">
-                <h1 className="text-xl ">@{activeChatUser.username}</h1>
-                <h2 className="text-md text-primary/60 font-light ">
+                <h1 className="text-lg">@{activeChatUser.username}</h1>
+                <h2 className="text-sm text-primary/60 font-light ">
                   {activeChatUser.fullname}
                 </h2>
               </div>

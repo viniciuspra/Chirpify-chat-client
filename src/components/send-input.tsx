@@ -5,6 +5,8 @@ import EmojiPicker, { EmojiClickData, Theme } from "emoji-picker-react";
 
 import { Paperclip, SendHorizonal, Smile } from "lucide-react";
 import { useTheme } from "./theme-provider";
+import { useAppSelector } from "@/redux/hooks";
+import { selectWindow } from "@/redux/window/slice";
 
 interface SendInputProp {
   userId: string;
@@ -18,6 +20,7 @@ export function SendInput({ userId, chatId }: SendInputProp) {
   const [emojiTheme, setEmojiTheme] = useState<Theme>(Theme.DARK);
 
   const { theme } = useTheme();
+  const { isMobile } = useAppSelector(selectWindow);
 
   const hanldeSubmitMessage = (message: string) => {
     if (chatId && userId && message.trim() !== "") {
@@ -54,7 +57,7 @@ export function SendInput({ userId, chatId }: SendInputProp) {
     } else {
       setEmojiTheme(Theme.DARK);
     }
-  }, [chosenEmoji, theme]);
+  }, [chosenEmoji, theme, message]);
 
   return (
     <div className="relative flex items-center gap-3 border border-primary/70 px-4 flex-1 min-h-16">
@@ -73,7 +76,7 @@ export function SendInput({ userId, chatId }: SendInputProp) {
           <Smile />
         </h1>
       </button>
-      {showEmojiPicker && (
+      {showEmojiPicker && !isMobile && (
         <div className="absolute bottom-14 right-10">
           <EmojiPicker onEmojiClick={onEmojiClick} theme={emojiTheme} />
         </div>

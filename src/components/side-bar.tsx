@@ -1,9 +1,18 @@
-import { SideBarItem } from "./side-bar-item";
+import {
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuItem,
+  DropdownMenuLabel,
+  DropdownMenuSeparator,
+  DropdownMenuTrigger,
+} from "@/components/ui/dropdown-menu";
+import { SideBarItem } from "@/components/side-bar-item";
 
-import { Inbox, AtSign, UserCircle2, Heart, MoreVertical } from "lucide-react";
 import { useAppDispatch, useAppSelector } from "@/redux/hooks";
 import { setActivePanel } from "@/redux/panel/slice";
 import { selectWindow } from "@/redux/window/slice";
+
+import { Inbox, AtSign, UserCircle2, Heart, MoreVertical } from "lucide-react";
 
 export type TooltipContent = "Chats" | "Contacts" | "Requests" | "Profile";
 
@@ -27,7 +36,19 @@ export function SideBar({ ...props }) {
     >
       {isMobile ? (
         <div className="flex flex-1 items-center justify-end">
-          <MoreVertical className="cursor-pointer active:bg-accent transition-colors w-10 h-10 rounded-full p-2" />
+          <DropdownMenu>
+            <DropdownMenuTrigger>
+              <MoreVertical className="cursor-pointer active:bg-accent transition-colors w-10 h-10 rounded-full p-2" />
+            </DropdownMenuTrigger>
+            <DropdownMenuContent side="left" className="mt-10">
+              <DropdownMenuLabel>Settings</DropdownMenuLabel>
+              <DropdownMenuSeparator />
+              <DropdownMenuItem>New Chat</DropdownMenuItem>
+              <DropdownMenuItem>Billing</DropdownMenuItem>
+              <DropdownMenuItem>Team</DropdownMenuItem>
+              <DropdownMenuItem>Subscription</DropdownMenuItem>
+            </DropdownMenuContent>
+          </DropdownMenu>
         </div>
       ) : (
         items.map((item, index) => (
