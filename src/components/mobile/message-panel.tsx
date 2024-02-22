@@ -12,7 +12,7 @@ import { useTheme } from "@/components/theme-provider";
 import { Avatar, AvatarImage, AvatarFallback } from "@/components/ui/avatar";
 import { ScrollArea, ScrollBar } from "@/components/ui/scroll-area";
 
-import emptyInbox from "@/components/assets/empty-inbox-outline.svg";
+import emptyInbox from "@/assets/empty-inbox-outline.svg";
 
 import { socket } from "@/services/socket";
 import { api } from "@/services/api";
