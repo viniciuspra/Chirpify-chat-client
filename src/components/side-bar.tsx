@@ -2,8 +2,6 @@ import {
   DropdownMenu,
   DropdownMenuContent,
   DropdownMenuItem,
-  DropdownMenuLabel,
-  DropdownMenuSeparator,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
 import { SideBarItem } from "@/components/side-bar-item";
@@ -41,12 +39,7 @@ export function SideBar({ ...props }) {
               <MoreVertical className="cursor-pointer active:bg-accent transition-colors w-10 h-10 rounded-full p-2" />
             </DropdownMenuTrigger>
             <DropdownMenuContent side="left" className="mt-10">
-              <DropdownMenuLabel>Settings</DropdownMenuLabel>
-              <DropdownMenuSeparator />
-              <DropdownMenuItem>New Chat</DropdownMenuItem>
-              <DropdownMenuItem>Billing</DropdownMenuItem>
-              <DropdownMenuItem>Team</DropdownMenuItem>
-              <DropdownMenuItem>Subscription</DropdownMenuItem>
+              <DropdownMenuItem>...soon</DropdownMenuItem>
             </DropdownMenuContent>
           </DropdownMenu>
         </div>
