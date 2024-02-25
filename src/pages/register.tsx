@@ -74,14 +74,14 @@ export function Register() {
             <LabelInput
               type="text"
               label="FullName"
-              placeholder="Ex: Chirpify Chat"
+              placeholder="Ex: John Doe"
               name="fullname"
               onChange={(e) => setFullname(e.target.value)}
             />
             <LabelInput
               type="text"
               label="Username"
-              placeholder="Ex: @Chirpify"
+              placeholder="Ex: Chirpify"
               name="username"
               onChange={(e) => setUsername(e.target.value)}
             />
