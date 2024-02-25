@@ -21,7 +21,7 @@ export function RequestMPanel({
   return (
     <div className="bg-secondary/70 rounded-md flex flex-col border">
       <div className="p-2">
-        <Accordion type="multiple">
+        <Accordion type="single" defaultValue={"received"}>
           <AccordionItem value="received">
             <AccordionTrigger className="text-lg p-3 hover:bg-secondary rounded-md group">
               <div className="flex gap-3 items-center">
