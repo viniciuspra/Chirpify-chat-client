@@ -116,7 +116,7 @@ export function MessagePanel() {
           </header>
           <div className="flex flex-col my-24 h-full w-full">
             <ScrollArea
-              className={`p-6 h-full w-full ${
+              className={`py-6 h-full w-full ${
                 theme === "dark" ? "bg-dark-pattern" : "bg-light-pattern"
               }`}
               style={{ height: "calc(100vh - 220px)" }}
