@@ -39,8 +39,8 @@ export function ContactMPanel() {
   }, [currentUser]);
 
   return (
-    <div className="bg-secondary/70 rounded-md flex flex-col border">
-      <div className="flex flex-col p-4 max-h-[85%] overflow-hidden">
+    <div className="bg-secondary/70 rounded-md flex flex-col border h-full">
+      <div className="flex flex-col p-4 max-h-[95%] overflow-hidden">
         <div className="flex items-center gap-3 h-12 border-none bg-accent/30 px-4 rounded-md text-lg mt-2 mb-6">
           <Search />
           <input
