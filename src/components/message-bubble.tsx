@@ -9,6 +9,10 @@ import {
 
 import { BoxSelect, Copy, TextSelect, Trash2 } from "lucide-react";
 
+import { ToastContainer, toast } from "react-toastify";
+import { toastOptions } from "@/configs/toastOptions";
+import "react-toastify/dist/ReactToastify.css";
+
 interface MessageBubbleProps {
   isUser?: boolean;
   text: string;
@@ -24,6 +28,7 @@ export function MessageBubble({ isUser, text, sendAt }: MessageBubbleProps) {
   const handleCopyToClipboard = async () => {
     try {
       await navigator.clipboard.writeText(text);
+      toast.success("Message copied to clipboard successfully.", toastOptions);
     } catch (error) {
       console.error("Error copying to clipboard:", error);
     }
@@ -47,6 +52,7 @@ export function MessageBubble({ isUser, text, sendAt }: MessageBubbleProps) {
               {formattedtime}
             </span>
           </div>
+          <ToastContainer />
         </div>
       </ContextMenuTrigger>
       <ContextMenuContent className="w-64">
