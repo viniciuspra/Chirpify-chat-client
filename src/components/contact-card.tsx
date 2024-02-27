@@ -84,7 +84,7 @@ export function ContactCard({
           </Avatar>
 
           <div className="flex flex-col gap-1">
-            <h3 className="font-semibold">{username}</h3>
+            <h3 className="font-semibold">@{username}</h3>
             {lastMessage && (
               <p className="text-primary/50">
                 {lastMessage.content.length > 10
