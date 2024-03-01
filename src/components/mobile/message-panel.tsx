@@ -7,7 +7,6 @@ import { selectAuth } from "@/redux/auth/slice";
 import { MessageBubble } from "@/components/message-bubble";
 import { SendInput } from "@/components/send-input";
 import { Messages } from "@/components/message-panel";
-import { useTheme } from "@/components/theme-provider";
 
 import { Avatar, AvatarImage, AvatarFallback } from "@/components/ui/avatar";
 import { ScrollArea, ScrollBar } from "@/components/ui/scroll-area";
@@ -24,8 +23,6 @@ export function MessageMPanel() {
   const [userId, setUserId] = useState<string>("");
   const [emitted, setEmitted] = useState<boolean>(false);
   const [messages, setMessages] = useState<Messages[]>([]);
-
-  const { theme } = useTheme();
 
   const user = useAppSelector(selectAuth);
   const { activeChatUser } = useAppSelector(selectActiveChatUser);
@@ -120,9 +117,7 @@ export function MessageMPanel() {
           </header>
           <div className="flex flex-col my-24 h-full w-full">
             <ScrollArea
-              className={`py-6 h-full w-full ${
-                theme === "dark" ? "bg-dark-pattern" : "bg-light-pattern"
-              }`}
+              className="py-6 h-full w-full bg-dark-pattern"
               style={{ height: "calc(100vh - 220px)" }}
             >
               {messages.map((message) => (
