@@ -18,14 +18,25 @@ import {
 } from "@/components/ui/sheet";
 import { Button } from "@/components/ui/button";
 
-import { SideBar, TooltipContent } from "@/components/side-bar";
-import { ModeToggle } from "@/components/mode-toggle";
-
-import { ChatsPanel, UserType } from "@/components/chats-panel";
+import {
+  AlertDialog,
+  AlertDialogAction,
+  AlertDialogCancel,
+  AlertDialogContent,
+  AlertDialogFooter,
+  AlertDialogHeader,
+  AlertDialogTitle,
+  AlertDialogTrigger,
+} from "@/components/ui/alert-dialog";
 import { ContactPanel } from "@/components/contact-panel";
 import { RequestPanel } from "@/components/request-panel";
 import { ProfilePanel } from "@/components/profile-panel";
 import { MessagePanel } from "@/components/message-panel";
+import { ChatsPanel, UserType } from "@/components/chats-panel";
+import { SideBar, TooltipContent } from "@/components/side-bar";
+import SetTheme from "@/components/set-theme";
+import { Theme } from "@/components/theme-provider";
+import { Logo } from "@/components/logo";
 
 import { MobileBar } from "@/components/mobile/mobile-bar";
 import { ChatsMPanel } from "@/components/mobile/chats-panel";
@@ -34,9 +45,9 @@ import { ContactMPanel } from "@/components/mobile/contact-panel";
 import { RequestMPanel } from "@/components/mobile/request-panel";
 import { MessageMPanel } from "@/components/mobile/message-panel";
 
-import Logo from "@/assets/logo.svg";
-
 import { socket } from "@/services/socket";
+
+import { LogOut } from "lucide-react";
 
 export function Chat() {
   const [receivedRequests, setReceivedRequests] = useState<UserType[]>([]);
@@ -56,6 +67,14 @@ export function Chat() {
   const receivedRequestsCount = useRef(receivedRequests.length);
 
   const items: TooltipContent[] = ["Profile", "Chats", "Contacts", "Requests"];
+  const themes: Theme[] = [
+    "default",
+    "orange",
+    "green",
+    "blue",
+    "red",
+    "yellow",
+  ];
 
   useEffect(() => {
     const handleResize = () => {
@@ -105,35 +124,52 @@ export function Chat() {
           <div className="flex bg-secondary/70 w-full h-20 rounded-md items-center p-4 shadow-lg border">
             <Sheet>
               <SheetTrigger asChild>
-                <Button className=" w-12 h-12 cursor-pointer p-2 rounded-md flex items-center justify-center hover:brightness-110 transition-all bg-slate-500/20 hover:bg-slate-500/20">
-                  <img src={Logo} alt="logo chirpify" className="w-10" />
+                <Button className="w-12 h-12 cursor-pointer p-2 rounded-md flex items-center justify-center hover:brightness-110 transition-all bg-slate-500/20 hover:bg-slate-500/20">
+                  <Logo size={36} />
                 </Button>
               </SheetTrigger>
-              <SheetContent side="left">
+              <SheetContent side="left" className="flex flex-col">
                 <SheetHeader>
-                  <ModeToggle />
-                  <SheetTitle className="flex items-center gap-4 font-bold text-3xl m-auto my-4">
-                    <img src={Logo} alt="logo chirpify" className="w-12" />{" "}
-                    Chirpify
+                  <SheetTitle className="flex font-bold text-2xl mt-5">
+                    <Logo
+                      withText
+                      className="flex flex-1 gap-3 items-center justify-center my-4"
+                      size={48}
+                    />
                   </SheetTitle>
                   <SheetDescription className="text-center">
                     Converse with your friends in a simple and fun way with
                     Chirpify
                   </SheetDescription>
                 </SheetHeader>
-
-                <SheetFooter className="mx-3 my-10">
-                  <Button
-                    variant={"outline"}
-                    className="text-red-500 hover:text-red-500"
-                    onClick={handleLogOut}
-                  >
-                    Log Out
-                  </Button>
+                <div className="flex flex-wrap px-10 items-center justify-center gap-4 mt-6">
+                  {themes &&
+                    themes.map((theme, index) => (
+                      <SetTheme key={index} theme={theme} />
+                    ))}
+                </div>
+                <SheetFooter className="flex flex-1 w-full items-center py-5">
+                  <AlertDialog>
+                    <AlertDialogTrigger className="text-red-500 hover:text-red-500 w-full justify-center p-5 flex gap-3 font-semibold border border-input bg-transparent shadow-md hover:bg-accent hover:text-accent-foreground h-3 items-center rounded-sm">
+                      Log Out <LogOut size={18} />
+                    </AlertDialogTrigger>
+                    <AlertDialogContent className="max-w-[80%]">
+                      <AlertDialogHeader>
+                        <AlertDialogTitle>
+                          Are you sure you want to logout?
+                        </AlertDialogTitle>
+                      </AlertDialogHeader>
+                      <AlertDialogFooter>
+                        <AlertDialogCancel>
+                          No, Stay Logged In
+                        </AlertDialogCancel>
+                        <AlertDialogAction onClick={handleLogOut}>
+                          Yes, Logout
+                        </AlertDialogAction>
+                      </AlertDialogFooter>
+                    </AlertDialogContent>
+                  </AlertDialog>
                 </SheetFooter>
-                <p className="text-primary/60 text-center w-fit px-5 py-2 bg-accent/70 rounded-full m-auto mt-10 cursor-not-allowed">
-                  ...soon
-                </p>
               </SheetContent>
             </Sheet>
             <SideBar />
@@ -144,34 +180,49 @@ export function Chat() {
           <Sheet>
             <SheetTrigger asChild>
               <Button className="w-16 h-16 cursor-pointer p-2 rounded-md flex items-center justify-center hover:brightness-110 transition-all bg-slate-500/20 hover:bg-slate-500/20">
-                <img src={Logo} alt="logo chirpify" className="w-10" />
+                <Logo size={48} />
               </Button>
             </SheetTrigger>
-            <SheetContent side="left">
-              <SheetHeader>
-                <ModeToggle />
-                <SheetTitle className="flex items-center gap-4 font-bold text-3xl m-auto my-4">
-                  <img src={Logo} alt="logo chirpify" className="w-12" />{" "}
-                  Chirpify
+            <SheetContent side="left" className="flex flex-col">
+              <SheetHeader className="space-y-3">
+                <SheetTitle className="flex font-bold text-3xl mt-10">
+                  <Logo
+                    withText
+                    className="flex gap-3 w-12 h-12 flex-1 justify-center items-center my-4"
+                    size={64}
+                  />
                 </SheetTitle>
                 <SheetDescription className="text-center">
                   Converse with your friends in a simple and fun way with
                   Chirpify
                 </SheetDescription>
               </SheetHeader>
-
-              <SheetFooter className="mx-3 my-10">
-                <Button
-                  variant={"outline"}
-                  className="text-red-500 hover:text-red-500"
-                  onClick={handleLogOut}
-                >
-                  Log Out
-                </Button>
+              <div className="w-52 p-3 my-6 flex gap-5 flex-wrap m-auto">
+                {themes &&
+                  themes.map((theme, index) => (
+                    <SetTheme key={index} theme={theme} />
+                  ))}
+              </div>
+              <SheetFooter className="flex flex-1 w-full items-end py-5">
+                <AlertDialog>
+                  <AlertDialogTrigger className="text-red-500 hover:text-red-500 w-full justify-center p-5 flex gap-3 font-semibold border border-input bg-transparent shadow-md hover:bg-accent hover:text-accent-foreground h-3 items-center rounded-sm">
+                    Log Out <LogOut size={18} />
+                  </AlertDialogTrigger>
+                  <AlertDialogContent>
+                    <AlertDialogHeader>
+                      <AlertDialogTitle>
+                        Are you sure you want to logout?
+                      </AlertDialogTitle>
+                    </AlertDialogHeader>
+                    <AlertDialogFooter>
+                      <AlertDialogCancel>No, Stay Logged In</AlertDialogCancel>
+                      <AlertDialogAction onClick={handleLogOut}>
+                        Yes, Logout
+                      </AlertDialogAction>
+                    </AlertDialogFooter>
+                  </AlertDialogContent>
+                </AlertDialog>
               </SheetFooter>
-              <p className="text-primary/60 text-center w-fit px-5 py-2 bg-accent/70 rounded-full m-auto mt-10 cursor-not-allowed">
-                ...soon
-              </p>
             </SheetContent>
           </Sheet>
           <SideBar />
