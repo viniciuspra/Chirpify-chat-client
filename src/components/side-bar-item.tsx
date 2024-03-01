@@ -4,14 +4,14 @@ import {
   TooltipProvider,
   TooltipTrigger,
 } from "@/components/ui/tooltip";
+import { TooltipContent as TooltipType } from "@/components/side-bar";
 
-import { TooltipContent as TooltipType } from "./side-bar";
-import { useAppDispatch, useAppSelector } from "@/redux/hooks";
 import {
   clearActivePanel,
   selectActivePanel,
   setActivePanel,
 } from "@/redux/panel/slice";
+import { useAppDispatch, useAppSelector } from "@/redux/hooks";
 import { selectRequest } from "@/redux/request/slice";
 
 interface ISideBarItemProps {
@@ -50,7 +50,7 @@ export function SideBarItem({
         >
           <TooltipTrigger
             data-selected={isSelected}
-            className="font-bold relative cursor-pointer sm:w-12 sm:h-12 w-8 h-8 transition-colors rounded-2xl mt-2 flex items-center justify-center data-[selected=true]:bg-slate-500/40 hover:bg-slate-500/20"
+            className="font-bold relative cursor-pointer sm:w-12 sm:h-12 w-8 h-8 transition-colors rounded-2xl mt-2 flex items-center justify-center data-[selected=true]:bg-logo/90 hover:bg-primary/30"
             onClick={HandleClick}
           >
             <Icon className="sm:w-7 sm:h-7" />
