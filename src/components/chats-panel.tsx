@@ -1,6 +1,8 @@
 import { useEffect, useState } from "react";
 
+import { api } from "@/services/api";
 import { socket } from "@/services/socket";
+
 import {
   Command,
   CommandInput,
@@ -16,17 +18,17 @@ import {
 } from "@/components/ui/popover";
 import { Avatar, AvatarImage, AvatarFallback } from "@/components/ui/avatar";
 import { ScrollArea, ScrollBar } from "@/components/ui/scroll-area";
-import { ContactCard } from "@/components/contact-card";
 import { Button } from "@/components/ui/button";
+
+import { Messages } from "@/components/message-panel";
+import { ContactCard } from "@/components/contact-card";
 
 import { useAppDispatch, useAppSelector } from "@/redux/hooks";
 import { setActiveChatUser } from "@/redux/chat/slice";
 import { selectAuth } from "@/redux/auth/slice";
 
-import { Messages } from "@/components/message-panel";
-
 import { Plus, Search } from "lucide-react";
-import { api } from "@/services/api";
+
 export type UserType = {
   id: string;
   fullname?: string;
@@ -145,7 +147,13 @@ export function ChatsPanel() {
                                   } h-2 w-2 rounded-full absolute bottom-0 right-0 z-10`}
                                 ></div>
                                 <Avatar>
-                                  <AvatarImage src={contact.avatar ? `${api.defaults.baseURL}/files/${contact.avatar}` : ""} />
+                                  <AvatarImage
+                                    src={
+                                      contact.avatar
+                                        ? `${api.defaults.baseURL}/files/${contact.avatar}`
+                                        : ""
+                                    }
+                                  />
                                   <AvatarFallback className="uppercase">
                                     {contact.username[0] + contact.username[1]}
                                   </AvatarFallback>

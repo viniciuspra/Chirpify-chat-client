@@ -1,17 +1,20 @@
 import { useEffect, useState } from "react";
 
+import { api } from "@/services/api";
+import { socket } from "@/services/socket";
+
 import { Avatar, AvatarImage, AvatarFallback } from "@/components/ui/avatar";
+import { Messages } from "@/components/message-panel";
 
 import { ToastContainer, toast } from "react-toastify";
 import { toastOptions } from "@/configs/toastOptions";
 
-import { Check } from "lucide-react";
-import { socket } from "@/services/socket";
 import { useAppSelector } from "@/redux/hooks";
 import { selectAuth } from "@/redux/auth/slice";
-import { Messages } from "./message-panel";
+
 import { formatDistanceToNow } from "date-fns";
-import { api } from "@/services/api";
+
+import { Check } from "lucide-react";
 
 interface ContactCardProps {
   id?: string;
@@ -102,7 +105,7 @@ export function ContactCard({
             <button
               type="button"
               onClick={handleAddClick}
-              className="text-blue-500 hover:font-semibold transition-colors h-fit p-1 rounded-md my-auto"
+              className="text-logo hover:font-semibold transition-colors h-fit p-1 rounded-md my-auto"
             >
               {isAdded ? <Check /> : "Add"}
             </button>

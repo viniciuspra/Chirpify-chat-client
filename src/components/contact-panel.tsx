@@ -1,12 +1,15 @@
-import { ContactCard } from "@/components/contact-card";
-import { ScrollArea, ScrollBar } from "@/components/ui/scroll-area";
-
-import { Search } from "lucide-react";
 import { useEffect, useState } from "react";
-import { UserType } from "./chats-panel";
+
 import { socket } from "@/services/socket";
+
+import { ScrollArea, ScrollBar } from "@/components/ui/scroll-area";
+import { ContactCard } from "@/components/contact-card";
+import { UserType } from "@/components/chats-panel";
+
 import { useAppSelector } from "@/redux/hooks";
 import { selectAuth } from "@/redux/auth/slice";
+
+import { Search } from "lucide-react";
 
 export function ContactPanel() {
   const [users, setUsers] = useState<UserType[]>([]);

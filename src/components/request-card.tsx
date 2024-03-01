@@ -1,9 +1,13 @@
+import { useEffect, useState } from "react";
+
+import { socket } from "@/services/socket";
+
 import { Avatar, AvatarImage, AvatarFallback } from "@/components/ui/avatar";
+
 import { selectAuth } from "@/redux/auth/slice";
 import { useAppSelector } from "@/redux/hooks";
-import { socket } from "@/services/socket";
+
 import { Check, X } from "lucide-react";
-import { useEffect, useState } from "react";
 
 type RequestStatus = "accepted" | "rejected" | "pending";
 

@@ -1,16 +1,14 @@
-import { UserType } from "./chats-panel";
-import { RequestCard } from "./request-card";
-
-import { ScrollArea, ScrollBar } from "@/components/ui/scroll-area";
 import {
   Accordion,
   AccordionItem,
   AccordionTrigger,
   AccordionContent,
 } from "@/components/ui/accordion";
+import { ScrollArea, ScrollBar } from "@/components/ui/scroll-area";
+import { RequestCard } from "@/components/request-card";
+import { UserType } from "@/components/chats-panel";
 
 import { useAppSelector } from "@/redux/hooks";
-
 import { selectRequest } from "@/redux/request/slice";
 
 export interface RequestPanelProp {

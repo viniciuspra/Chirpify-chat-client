@@ -1,12 +1,15 @@
 import React, { useEffect, useState } from "react";
+
 import { socket } from "@/services/socket";
 
-import EmojiPicker, { EmojiClickData, Theme } from "emoji-picker-react";
+import EmojiPicker, { EmojiClickData } from "emoji-picker-react";
 
-import { Paperclip, SendHorizonal, Smile } from "lucide-react";
-import { useTheme } from "./theme-provider";
 import { useAppSelector } from "@/redux/hooks";
 import { selectWindow } from "@/redux/window/slice";
+
+import { useTheme } from "@/components/theme-provider";
+
+import { Paperclip, SendHorizonal, Smile } from "lucide-react";
 
 interface SendInputProp {
   userId: string;
@@ -17,7 +20,6 @@ export function SendInput({ userId, chatId }: SendInputProp) {
   const [message, setMessage] = useState("");
   const [chosenEmoji, setChosenEmoji] = useState<EmojiClickData | null>(null);
   const [showEmojiPicker, setShowEmojiPicker] = useState(false);
-  const [emojiTheme, setEmojiTheme] = useState<Theme>(Theme.DARK);
 
   const { theme } = useTheme();
   const { isMobile } = useAppSelector(selectWindow);
@@ -51,12 +53,6 @@ export function SendInput({ userId, chatId }: SendInputProp) {
       setMessage(messageWithEmoji);
       setChosenEmoji(null);
     }
-
-    if (theme === "light") {
-      setEmojiTheme(Theme.LIGHT);
-    } else {
-      setEmojiTheme(Theme.DARK);
-    }
   }, [chosenEmoji, theme, message]);
 
   return (
@@ -78,7 +74,7 @@ export function SendInput({ userId, chatId }: SendInputProp) {
       </button>
       {showEmojiPicker && !isMobile && (
         <div className="absolute bottom-14 right-10">
-          <EmojiPicker onEmojiClick={onEmojiClick} theme={emojiTheme} />
+          <EmojiPicker onEmojiClick={onEmojiClick} />
         </div>
       )}
       <div className="cursor-pointer bg-logo rounded-sm transition-colors w-14 h-12 flex items-center justify-center hover:brightness-110">
