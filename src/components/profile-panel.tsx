@@ -319,7 +319,7 @@ export function ProfilePanel() {
       </div>
       <div className="w-full flex items-center justify-end p-5">
         <AlertDialog>
-          <AlertDialogTrigger className="text-red-500 hover:text-red-500 p-5 flex gap-3 font-semibold border border-input bg-transparent shadow-md hover:bg-accent hover:text-accent-foreground h-3 items-center rounded-sm">
+          <AlertDialogTrigger className="text-red-500 hover:text-red-500 p-5 flex gap-3 font-semibold border border-muted/40 bg-transparent shadow-md hover:bg-accent hover:text-accent-foreground h-3 items-center rounded-sm">
             Log Out <LogOut size={18} />
           </AlertDialogTrigger>
           <AlertDialogContent>

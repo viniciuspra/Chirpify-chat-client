@@ -1,4 +1,5 @@
 import { InputHTMLAttributes } from "react";
+
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 
@@ -16,7 +17,7 @@ export function LabelInput({ label, name, ...rest }: LabelInputProps) {
       <Input
         id={name}
         {...rest}
-        className="h-12 rounded-lg outline-none p-3 font-medium bg-primary text-black"
+        className="h-12 rounded-md outline-none p-3 font-medium bg-white text-black"
       />
     </div>
   );

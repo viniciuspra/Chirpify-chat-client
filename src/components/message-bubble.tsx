@@ -40,8 +40,8 @@ export function MessageBubble({ isUser, text, sendAt }: MessageBubbleProps) {
         <div
           className={`w-fit flex p-1 rounded-b-xl relative text-white font-semibold whitespace-normal ${
             isUser
-              ? "self-end bg-logo md:ml-8 ml-3 rounded-l-xl"
-              : "self-start bg-slate-800 md:mr-8 mr-3 rounded-r-xl"
+              ? "self-end bg-logo/70 md:ml-8 ml-3 rounded-l-xl"
+              : "self-start bg-muted md:mr-8 mr-3 rounded-r-xl"
           } break-all transition-colors active:bg-background group-active:bg-background`}
         >
           <p className="p-2">{text}</p>

@@ -50,13 +50,17 @@ export function Login() {
 
   return (
     <div className="h-screen w-screen flex flex-col items-center justify-center md:py-20 md:px-14">
-      <div className="bg-secondary w-full sm:max-w-[600px] sm:max-h-[690px] rounded-lg sm:py-16 px-10 flex flex-1 items-center justify-center">
+      <div className="bg-secondary w-full sm:max-w-[600px] sm:max-h-[690px] rounded-lg sm:py-16 px-10 flex flex-1 items-center">
         <form
           onSubmit={handleSubmit}
-          className="flex flex-col sm:h-full p-5 space-y-10 flex-1"
+          className="flex flex-col sm:h-full p-5 flex-1"
         >
-          <Logo />
-          <div className="flex-1 flex flex-col justify-center space-y-5">
+          <Logo
+            withText
+            className="flex items-center justify-center text-4xl gap-5"
+            size={96}
+          />
+          <div className="flex-1 flex flex-col justify-around py-10">
             <LabelInput
               type="username"
               label="Username"
@@ -72,15 +76,17 @@ export function Login() {
               onChange={(e) => setPassword(e.target.value)}
             />
           </div>
-          <Button className="text-base h-11" type="submit">
-            Login
-          </Button>
-          <p className="text-center">
-            Dont't have an account?{" "}
-            <a href="/register" className="text-blue-500 font-medium uppercase">
-              register
-            </a>
-          </p>
+          <div className="w-full flex flex-col gap-3">
+            <Button className="text-base h-12" type="submit">
+              Login
+            </Button>
+            <p className="text-center">
+              Dont't have an account?{" "}
+              <a href="/register" className="text-logo font-medium uppercase">
+                register
+              </a>
+            </p>
+          </div>
         </form>
         <ToastContainer />
       </div>
