@@ -19,7 +19,7 @@ export function RequestMPanel({
   const { receivedRequestCount } = useAppSelector(selectRequest);
 
   return (
-    <div className="bg-secondary/70 rounded-md flex flex-col border">
+    <div className="bg-secondary/70 rounded-md flex flex-col border flex-1">
       <div className="p-2">
         <Accordion type="single" defaultValue={"received"}>
           <AccordionItem value="received">

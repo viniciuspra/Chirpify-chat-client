@@ -175,7 +175,7 @@ export function ProfileMPanel() {
   }, [AuthUser]);
 
   return (
-    <div className="bg-secondary/70 rounded-md flex flex-col border">
+    <div className="bg-secondary/70 rounded-md flex flex-col border flex-1">
       <div className="py-4 px-6 flex flex-col flex-1 mt-6">
         <label className="relative rounded-full cursor-pointer flex py-4 w-fit h-24 items-center justify-center group transition-all">
           <div className="absolute w-24 h-24 rounded-full bg-white/20 dark:bg-muted/30 text-white flex items-center justify-center transition-all z-10 opacity-0 group-hover:opacity-100">
