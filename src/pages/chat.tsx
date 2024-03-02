@@ -232,7 +232,7 @@ export function Chat() {
       {isMobile ? (
         <main
           className={`flex flex-col flex-1 rounded-sm overflow-hidden ${
-            activeChatUser ? "" : "bg-muted mt-4"
+            activeChatUser ? "" : "bg-secondary mt-4"
           }`}
         >
           {activeChatUser === null && (
